@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
-"""Проверка доступности источников из data/matriks.csv и data/sources_catalog.csv.
+"""Проверка ссылок и структуры источников матрицы.
 
-Для каждой ссылки:
-  1. пробуем открыть (HEAD, затем GET) с обычным браузерным UA;
-  2. если недоступна — ищем снапшот в Wayback Machine (CDX API) и печатаем его URL;
-  3. итог — таблица + сводка.
+По умолчанию скрипт пытается открыть все URL и для ошибок ищет Wayback-снапшот.
+Флаг ``--syntax-only`` запускает локальную проверку без сети: у каждой строки
+матрицы и каталога должен быть полный URL конкретной страницы, а не ``-``,
+пустое значение или один домен. Наличие полного URL не означает, что источник
+подтверждает утверждение — это проверяется редактором по цитате и уровню
+атрибуции.
 
-Запуск:  python3 scripts/check_sources.py
-Требования: только стандартная библиотека. Работает на машине с обычным
-интернет-доступом (из песочницы агента исходящий трафик отрезан).
+Запуск:
+  python3 scripts/check_sources.py --syntax-only
+  python3 scripts/check_sources.py
 """
 import csv
 import json
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -21,6 +24,47 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/126.0 Safari/537.36")
+GOOD = (200, 301, 302, 303, 307, 308)
+PLACEHOLDERS = {"", "-", "—", "не найдено", "не установлен"}
+
+
+def is_direct_url(value: str) -> bool:
+    """Разрешает http(s) URL с непустым путём, но не домен/корень сайта."""
+    if value in PLACEHOLDERS:
+        return False
+    try:
+        parsed = urllib.parse.urlparse(value)
+    except ValueError:
+        return False
+    return (
+        parsed.scheme in {"http", "https"}
+        and bool(parsed.netloc)
+        and parsed.path not in {"", "/"}
+        and " " not in value
+    )
+
+
+def validate_local_files() -> list[str]:
+    errors = []
+    checks = (
+        ("data/matriks.csv", "source_url"),
+        ("data/sources_catalog.csv", "url"),
+    )
+    for rel, field in checks:
+        path = ROOT / rel
+        if not path.exists():
+            errors.append(f"{rel}: файл не найден")
+            continue
+        with path.open(encoding="utf-8", newline="") as f:
+            reader = csv.DictReader(f)
+            if field not in (reader.fieldnames or []):
+                errors.append(f"{rel}: отсутствует колонка {field}")
+                continue
+            for number, row in enumerate(reader, start=2):
+                value = (row.get(field) or "").strip()
+                if not is_direct_url(value):
+                    errors.append(f"{rel}:{number}: недопустимый полный URL: {value!r}")
+    return errors
 
 
 def http_status(url: str, timeout: int = 20) -> int:
@@ -32,7 +76,7 @@ def http_status(url: str, timeout: int = 20) -> int:
     except urllib.error.HTTPError as e:
         return e.code
     except Exception:
-        return 0  # network error / blocked
+        return 0
 
 
 def wayback_snapshot(url: str, timeout: int = 20) -> str:
@@ -49,46 +93,53 @@ def wayback_snapshot(url: str, timeout: int = 20) -> str:
 
 
 def collect_urls():
-    urls = {}  # url -> где встречается
-    for rel in ("data/matriks.csv", "data/sources_catalog.csv"):
-        p = ROOT / rel
-        if not p.exists():
+    urls = {}
+    for rel, field in (("data/matriks.csv", "source_url"),
+                       ("data/sources_catalog.csv", "url")):
+        path = ROOT / rel
+        if not path.exists():
             continue
-        with p.open(encoding="utf-8") as f:
+        with path.open(encoding="utf-8", newline="") as f:
             for row in csv.DictReader(f):
-                for field in ("url", "istochnik_url"):
-                    v = (row.get(field) or "").strip()
-                    if v.startswith("http"):
-                        urls.setdefault(v, []).append(rel)
-    # дубль из матрицы: некоторые строки держат URL в нескольких полях
+                value = (row.get(field) or "").strip()
+                if value:
+                    urls.setdefault(value, []).append(rel)
     return urls
 
 
 def main():
+    errors = validate_local_files()
+    if errors:
+        print("Локальная проверка: ОШИБКИ")
+        print("\n".join(errors))
+        return 2
+    print("Локальная проверка: OK — все строки матрицы и каталога имеют полный URL")
+    if "--syntax-only" in sys.argv:
+        return 0
+
     urls = collect_urls()
     print(f"Всего уникальных ссылок: {len(urls)}\n")
     print(f"{'код':<6} {'wayback':<10} URL")
     ok = broken = 0
-    for url, where in sorted(urls.items()):
+    for url in sorted(urls):
         code = http_status(url)
         snap = ""
-        if code not in (200, 301, 302, 303, 307, 308):
+        if code not in GOOD:
             snap = wayback_snapshot(url)
-            time.sleep(1)  # вежливая пауза к archive.org
-        if code in (200, 301, 302, 303, 307, 308):
+            time.sleep(1)
+        if code in GOOD:
             ok += 1
         else:
             broken += 1
-        wb = ("да" if snap else "—")
-        print(f"{code:<6} {wb:<10} {url}")
+        print(f"{code:<6} {'да' if snap else '—':<10} {url}")
         if snap:
             print(f"{'':<6} {'снапшот':<10} {snap}")
         time.sleep(0.5)
     print(f"\nДоступно: {ok}, проблемно/мёртво: {broken}")
     if broken:
-        print("Для проблемных ссылок используйте снапшоты Wayback "
-              "(столбец wayback) — либо открывайте в обычном браузере "
-              "(бот-защита избиркомов/VK часто срабатывает на скрипты).")
+        print("Для проблемных ссылок используйте снапшоты Wayback или проверку "
+              "в обычном браузере: бот-защита избиркомов/VK часто срабатывает "
+              "на скрипты.")
     return 0
 
 

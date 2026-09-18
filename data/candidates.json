@@ -68,7 +68,22 @@
         "посты VK/MAX/TG 2025–2026 (еженедельный срез)",
         "итоги 20.09.2026",
         "отчёт о расходах избирательного фонда (ГИК, октябрь 2026)"
-      ]
+      ],
+      "svo_audit": {
+        "personal_confirmation": "найдено",
+        "attribution_levels": [
+          "личное высказывание",
+          "личное действие"
+        ],
+        "source_urls": [
+          "https://spb.er.ru/activity/news/deputaty-otpravili-85-j-gumanitarnyj-konvoj-v-zonu-svo-i-prifrontovye-regiony",
+          "https://spb.er.ru/activity/news/deputaty-peterburgskogo-parlamenta-dostavili-50-j-konvoj-s-gumanitarnym-gruzom-v-raspolozhenie-leningradskogo-polka",
+          "https://mitropolia.spb.ru/news/parishs/?id=285833",
+          "https://www.zaks.ru/new/archive/view/266304",
+          "https://www.zaks.ru/new/archive/view/267744",
+          "https://www.zaks.ru/new/archive/view/268360"
+        ]
+      }
     },
     {
       "full_name": "Дудоладов Глеб Борисович",
@@ -92,7 +107,10 @@
         "max": null,
         "ok": null,
         "telegram": null,
-        "party_channels": ["https://t.me/spravPiter", "https://t.me/tihonovaNG"]
+        "party_channels": [
+          "https://t.me/spravPiter",
+          "https://t.me/tihonovaNG"
+        ]
       },
       "gazprom_card": "http://izbirkom.ru/election/588148278/commission/e6db5e52-02be-4804-8456-38b14ed1af86/candidates/2489188a-89df-46fc-893b-9e6b5488cbf9",
       "key_sources": [
@@ -107,7 +125,19 @@
         "ПРОБЕЛ: публичные заявления/программа в кампании 2026",
         "итоги 20.09.2026",
         "отчёт о расходах (ГИК, октябрь 2026)"
-      ]
+      ],
+      "svo_audit": {
+        "personal_confirmation": "в проверенных источниках персональное подтверждение не найдено",
+        "attribution_levels": [
+          "не найдено",
+          "партийная активность"
+        ],
+        "party_context_urls": [
+          "https://spravedlivo.ru/16228710",
+          "https://moskva.spravedlivo.ru/28703410"
+        ],
+        "note": "Отрицательный результат не означает, что события не было."
+      }
     },
     {
       "full_name": "Зверев Артём Александрович",
@@ -132,7 +162,9 @@
         "max": null,
         "ok": null,
         "telegram": null,
-        "party_profile": ["https://spb.ldpr.ru/members/sankt_peterburg/zverev-artyem-aleksandrovich/"],
+        "party_profile": [
+          "https://spb.ldpr.ru/members/sankt_peterburg/zverev-artyem-aleksandrovich/"
+        ],
         "phone": "+7 812 233-14-78"
       },
       "gazprom_card": "http://izbirkom.ru/election/588148278/commission/e6db5e52-02be-4804-8456-38b14ed1af86/candidates/521a8097-1fb7-4327-953f-c349cdb3fe3f",
@@ -149,7 +181,20 @@
         "материалы кампании по окр. №213 (ГД)",
         "итоги 20.09.2026 (ЗакС и/или ГД)",
         "отчёт о расходах (ГИК, октябрь 2026)"
-      ]
+      ],
+      "svo_audit": {
+        "personal_confirmation": "найдено",
+        "attribution_levels": [
+          "личное высказывание",
+          "личное действие"
+        ],
+        "source_urls": [
+          "https://spb.ldpr.ru/event/prazdnik-vmeste-s-zashchitnikami-otechestva-spb/"
+        ],
+        "party_context_urls": [
+          "https://ldpr.ru/event/448157/"
+        ]
+      }
     },
     {
       "full_name": "Луговской Роман Андреевич",
@@ -192,7 +237,19 @@
         "ПРОБЕЛ: индивидуальные программные заявления 2026 (пресс-центр КПРФ СПб, пикеты)",
         "итоги 20.09.2026",
         "отчёт о расходах (ГИК, октябрь 2026)"
-      ]
+      ],
+      "svo_audit": {
+        "personal_confirmation": "в проверенных источниках персональное подтверждение не найдено",
+        "attribution_levels": [
+          "не найдено",
+          "партийная активность"
+        ],
+        "party_context_urls": [
+          "https://cprfspb.ru/news/sbor-ghumanitarnoi-pomoshchi-zhitieliam-donietska-i-lughanska/",
+          "https://msk.kprf.ru/2026/04/30/286493/"
+        ],
+        "note": "Отрицательный результат не означает, что события не было."
+      }
     }
   ]
 }
