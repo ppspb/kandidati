@@ -167,7 +167,7 @@
         "Сеть стоматологических клиник (юрлица уточнить по ЕГРЮЛ); соучредитель с супругой (Ю. Зверева — главный врач)"
       ],
       "social": {
-        "vk": null,
+        "vk": "https://vk.com/zverev_aa",
         "max": null,
         "ok": null,
         "telegram": null,
@@ -183,10 +183,13 @@
         "https://www.zaks.ru/new/archive/view/267388",
         "https://spb.ldpr.ru/members/sankt_peterburg/zverev-artyem-aleksandrovich/",
         "https://forpost-sz.ru/a/2026-09-07/spasi-rossiyu-kak-agitiruyut-kandidaty-v-deputaty-v-peterburge",
-        "https://gogov.ru/candidates-sep26/pushkin"
+        "https://gogov.ru/candidates-sep26/pushkin",
+        "https://spb.ldpr.ru/event/ldpr-predlozhila-vvesti-tryekhletnie-kreditnye-kanikuly-dlya-malogo-biznesa/",
+        "https://www.dp.ru/a/2026/04/15/objasnite-porusski-biznes",
+        "https://www.dp.ru/a/2026/05/06/sezon-premer-i-welcome"
       ],
       "matrix_gaps": [
-        "URL личного TG/VK-канала",
+        "содержание личной страницы VK https://vk.com/zverev_aa — отдельный просмотр и архивирование постов",
         "материалы кампании по окр. №213 (ГД)",
         "итоги 20.09.2026 (ЗакС и/или ГД)",
         "отчёт о расходах (ГИК, октябрь 2026)"
@@ -231,7 +234,8 @@
           "https://cprfspb.ru/rajonnye-organizacii/",
           "https://kprf.ru/party-live/regnews/243282.html"
         ],
-        "phone": "+7 952 202-39-39"
+        "phone": "+7 952 202-39-39",
+        "facebook": "https://www.facebook.com/rlugovskoy/"
       },
       "gazprom_card": "http://izbirkom.ru/election/588148278/commission/e6db5e52-02be-4804-8456-38b14ed1af86/candidates/af825214-3acc-43b1-9f99-5034a599952f",
       "key_sources": [
@@ -240,10 +244,18 @@
         "https://kprf.ru/news/pr/46821.html",
         "https://kprf.ru/party-live/regnews/243282.html",
         "http://ppt.ru/person.phtml?id=10158",
-        "https://www.zaks.ru/new/person/view/4827"
+        "https://www.zaks.ru/new/person/view/4827",
+        "https://economy.spbstu.ru/author/3424/",
+        "https://openbooks.itmo.ru/ru/articles/author/614/lugovskoy_r__a_.html",
+        "http://old.cprfspb.ru/13152.html",
+        "http://old.cprfspb.ru/14824.html",
+        "http://old.cprfspb.ru/17814.html",
+        "https://kprf.ru/party-live/regnews/223862.html",
+        "https://candidates.golosinfo.org/p/159512-lugovskoy-roman-andreevich"
       ],
       "matrix_gaps": [
-        "ПРОБЕЛ: индивидуальные программные заявления 2026 (пресс-центр КПРФ СПб, пикеты)",
+        "индивидуальные программные заявления именно в кампании 2026 (пресс-центр КПРФ СПб, пикеты, дебаты)",
+        "содержание личной страницы Facebook https://www.facebook.com/rlugovskoy/ — отдельный просмотр и архивирование",
         "итоги 20.09.2026",
         "отчёт о расходах (ГИК, октябрь 2026)"
       ],
