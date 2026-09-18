@@ -28,6 +28,7 @@
     claims: [],
     claimsById: new Map(),
     issues: [],
+    longread: null,
     selectedCandidates: new Set(candidateOrder.map((candidate) => candidate.id)),
     topic: "all",
     evidence: "all",
@@ -368,6 +369,117 @@
     </details>`;
   }
 
+  function claimKindLabel(row) {
+    const labels = {
+      биография: "Биография",
+      поступок: "Действие",
+      действие: "Действие",
+      взгляд: "Высказывание",
+      кампания: "Кампания",
+      контекст: "Общий контекст",
+      "партийный контекст": "Партийный контекст",
+      бизнес: "Бизнес",
+      финансирование: "Финансы",
+      "финансовые сведения": "Финансы",
+      "проверка атрибуции": "Проверка источника",
+      "контакт с жителями": "Обращения жителей"
+    };
+    return labels[row.tip] || "Запись";
+  }
+
+  function renderLongreadClaim(row) {
+    const candidate = candidateOrder.find((item) => item.name === row.kandidat);
+    const subject = row.kandidat === "все" ? "Общие сведения" : (candidate?.short || row.kandidat);
+    const attribution = classifyAttribution(row);
+    return `<article class="longread-claim ${attribution === "party" ? "is-party" : ""} ">
+      <div class="longread-claim-head">
+        <div>
+          <strong>${escapeHtml(subject)}</strong>
+          <span class="longread-claim-meta">${escapeHtml(row.data || "Дата не указана")} · ${escapeHtml(claimKindLabel(row))}</span>
+        </div>
+        <span class="badge badge-${escapeHtml(attribution)}">${escapeHtml(attributionLabel(attribution))}</span>
+      </div>
+      <p class="longread-claim-text">${escapeHtml(row.utverzhdenie)}</p>
+      ${row.citata ? `<blockquote>${escapeHtml(row.citata)}</blockquote>` : ""}
+      <div class="longread-claim-foot">
+        <span class="badge badge-muted">${escapeHtml(row.status || "Статус не указан")}</span>
+        ${renderSource(row)}
+      </div>
+    </article>`;
+  }
+
+  function renderLongreadClaimGroup(title, lead, rows) {
+    if (!rows.length) return "";
+    return `<section class="longread-subsection">
+      <h4>${escapeHtml(title)}</h4>
+      ${lead ? `<p class="longread-subsection-lead">${escapeHtml(lead)}</p>` : ""}
+      <div class="longread-claims">${rows.map(renderLongreadClaim).join("")}</div>
+    </section>`;
+  }
+
+  function configThemesForTimeline() {
+    return state.longread?.timeline_themes || [];
+  }
+
+  function renderLongreadTimeline() {
+    const rows = state.claims
+      .filter((row) => row.kandidat !== "все" && row.data && /^2026/.test(row.data) && configThemesForTimeline().includes(row.tema))
+      .sort((a, b) => String(a.data).localeCompare(String(b.data)));
+    if (!rows.length) return "";
+    return `<section id="longread-timeline" class="longread-chapter">
+      <div class="longread-chapter-heading"><p class="eyebrow">Глава 2</p><h3>Хронология кампании</h3><p>Здесь события стоят по времени. Если событие относится к одному кандидату или партии, это указано в самой записи.</p></div>
+      <div class="longread-timeline">${rows.map((row) => `<div class="timeline-item"><span class="timeline-date">${escapeHtml(row.data)}</span>${renderLongreadClaim(row)}</div>`).join("")}</div>
+    </section>`;
+  }
+
+  function renderLongread() {
+    const config = state.longread;
+    if (!config) return;
+    const intro = $("#longread-intro");
+    const toc = $("#longread-toc");
+    const content = $("#longread-content");
+    if (!intro || !toc || !content) return;
+
+    intro.innerHTML = `<p class="longread-kicker">${escapeHtml(config.intro.kicker)}</p><h3>${escapeHtml(config.intro.title)}</h3><p>${escapeHtml(config.intro.text)}</p><p class="longread-note">${escapeHtml(config.intro.note)}</p>`;
+    toc.innerHTML = `<strong>Содержание</strong><ol>
+      <li><a href="#longread-elections">Округ и правила выборов</a></li>
+      <li><a href="#longread-timeline">Хронология кампании</a></li>
+      <li><a href="#longread-candidates">Кандидаты</a></li>
+      ${candidateOrder.map((candidate) => `<li><a href="#longread-candidate-${escapeHtml(candidate.id)}">${escapeHtml(candidate.short)}</a></li>`).join("")}
+      <li><a href="#compare">Сравнение по вопросам</a></li>
+      <li><a href="#ledger">Все источники</a></li>
+    </ol>`;
+
+    const general = config.general_chapters.map((chapter, index) => {
+      const rows = state.claims.filter((row) => row.kandidat === "все" && chapter.themes.includes(row.tema));
+      return `<section id="longread-${escapeHtml(chapter.id)}" class="longread-chapter">
+        <div class="longread-chapter-heading"><p class="eyebrow">Глава ${index + 1}</p><h3>${escapeHtml(chapter.title)}</h3><p>${escapeHtml(chapter.lead)}</p></div>
+        <div class="longread-claims">${rows.length ? rows.map(renderLongreadClaim).join("") : `<p class="longread-empty">В текущем списке отдельной записи нет.</p>`}</div>
+      </section>`;
+    }).join("");
+
+    const candidateChapters = `<section id="longread-candidates" class="longread-candidates"><div class="longread-chapter-heading"><p class="eyebrow">Глава 3</p><h3>Четыре кандидата</h3><p>У каждого профиля один и тот же порядок. Сначала опыт, затем кампании, работа с жителями, бизнес и публичные действия. Партийные материалы помечены отдельно.</p></div>${candidateOrder.map((orderItem) => {
+      const candidate = state.candidateById.get(orderItem.id);
+      if (!candidate) return "";
+      const rows = state.claims.filter((row) => candidateIdFromName(row.kandidat) === candidate.id);
+      const groups = config.candidate_groups.map((group) => renderLongreadClaimGroup(group.title, group.lead, rows.filter((row) => group.themes.includes(row.tema)))).join("");
+      const mappedThemes = new Set(config.candidate_groups.flatMap((group) => group.themes));
+      const otherRows = rows.filter((row) => !mappedThemes.has(row.tema));
+      const other = renderLongreadClaimGroup(config.fallback.title, config.fallback.lead, otherRows);
+      return `<article id="longread-candidate-${escapeHtml(candidate.id)}" class="longread-candidate">
+        <header class="longread-candidate-heading"><p class="eyebrow">${escapeHtml(candidate.party || "Кандидат")}</p><h3>${escapeHtml(candidate.short)}</h3><p>${escapeHtml(shortRole(candidate) || "Кандидат по округу №3")}</p></header>
+        <p class="longread-candidate-note">В этом профиле показано ${rows.length} записей. Это объём найденных материалов, а не оценка кандидата.</p>
+        ${groups || `<p class="longread-empty">По кандидату пока нет отдельных записей.</p>`}
+        ${other}
+        ${renderSvoAudit(candidate)}
+        ${(candidate.matrix_gaps || []).length ? `<section class="longread-gaps"><h4>Что ещё не удалось проверить</h4>${renderItems(candidate.matrix_gaps)}</section>` : ""}
+        <p class="longread-back"><a href="#longread-candidates">↑ К списку кандидатов</a></p>
+      </article>`;
+    }).join("")}</section>`;
+
+    content.innerHTML = `${general}${renderLongreadTimeline()}${candidateChapters}`;
+  }
+
   function renderCandidateCard(candidate) {
     const allRows = state.claims.filter((row) => candidateIdFromName(row.kandidat) === candidate.id);
     const mappedIssues = state.issues.filter((issue) => issueClaims(issue.issue_id).some((row) => candidateIdFromName(row.kandidat) === candidate.id)).length;
@@ -454,18 +566,20 @@
 
   async function loadData() {
     const base = document.baseURI;
-    const [matrixResponse, candidatesResponse, issuesResponse] = await Promise.all([
+    const [matrixResponse, candidatesResponse, issuesResponse, longreadResponse] = await Promise.all([
       fetch(new URL("data/matriks.csv", base)),
       fetch(new URL("data/candidates.json", base)),
-      fetch(new URL("data/issue_taxonomy.csv", base))
+      fetch(new URL("data/issue_taxonomy.csv", base)),
+      fetch(new URL("data/longread_sections.json", base))
     ]);
-    if (!matrixResponse.ok || !candidatesResponse.ok || !issuesResponse.ok) throw new Error("Не удалось загрузить один из файлов данных.");
-    const [matrixText, candidateData, issueText] = await Promise.all([
+    if (!matrixResponse.ok || !candidatesResponse.ok || !issuesResponse.ok || !longreadResponse.ok) throw new Error("Не удалось загрузить один из файлов данных.");
+    const [matrixText, candidateData, issueText, longreadData] = await Promise.all([
       matrixResponse.text(),
       candidatesResponse.json(),
-      issuesResponse.text()
+      issuesResponse.text(),
+      longreadResponse.json()
     ]);
-    return { claims: parseCsv(matrixText), candidates: parseCandidates(candidateData), issues: parseCsv(issueText) };
+    return { claims: parseCsv(matrixText), candidates: parseCandidates(candidateData), issues: parseCsv(issueText), longread: longreadData };
   }
 
   function showError(error) {
@@ -481,11 +595,14 @@
       state.claims = data.claims;
       state.claimsById = new Map(data.claims.map((claim) => [claim.id, claim]));
       state.issues = data.issues;
+      state.longread = data.longread;
 
       $("#stat-candidates").textContent = data.candidates.length;
       $("#stat-topics").textContent = data.issues.length;
+      $("#stat-raw-topics").textContent = new Set(data.claims.map((claim) => claim.tema).filter(Boolean)).size;
       $("#stat-evidence").textContent = data.claims.length;
       $("#topic-filter").insertAdjacentHTML("beforeend", data.issues.map((issue) => `<option value="${escapeHtml(issue.issue_id)}">${escapeHtml(issue.category)}</option>`).join(""));
+      renderLongread();
       renderCandidateSwitcher();
       renderComparison();
       renderCandidates();

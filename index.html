@@ -21,8 +21,8 @@
           <p class="lead">Простой справочник о четырёх кандидатах. Здесь можно увидеть их слова и действия, открыть источники и понять, что пока не удалось проверить.</p>
           <p class="hero-source">Округ и выборы: <a href="https://www.zaks.ru/new/archive/view/267807" target="_blank" rel="noopener">материал о кандидатах</a> · <a href="https://ru.wikipedia.org/wiki/Выборы_в_Законодательное_собрание_Санкт-Петербурга_(2026)" target="_blank" rel="noopener">справка о выборах</a>.</p>
           <div class="hero-actions">
-            <a href="#compare" role="button">Сравнить кандидатов</a>
-            <a href="#method" role="button" class="secondary outline">Как читать сайт</a>
+            <a href="#longread" role="button">Читать подробный разбор</a>
+            <a href="#compare" role="button" class="secondary outline">Сравнить по вопросам</a>
           </div>
         </div>
         <aside class="principles-card" aria-label="Принципы справочника">
@@ -37,9 +37,22 @@
 
       <section class="container stats" aria-label="О справочнике">
         <article class="stat-card"><strong id="stat-candidates">—</strong><span>кандидата</span></article>
-        <article class="stat-card"><strong id="stat-topics">—</strong><span>тем для сравнения</span></article>
+        <article class="stat-card"><strong id="stat-topics">—</strong><span>вопросов для сравнения</span></article>
+        <article class="stat-card"><strong id="stat-raw-topics">—</strong><span>тематических меток</span></article>
         <article class="stat-card"><strong id="stat-evidence">—</strong><span>фактов со ссылками</span></article>
-        <article class="stat-card stat-card-note"><strong>0</strong><span>общих оценок</span></article>
+      </section>
+
+      <section id="longread" class="container section-block longread-section">
+        <div class="section-heading longread-heading">
+          <div>
+            <p class="eyebrow">Подробный разбор</p>
+            <h2>Округ, выборы и кандидаты</h2>
+          </div>
+          <p class="section-intro">Это основная часть сайта. Здесь собраны общие сведения, хронология и одинаковые главы о каждом кандидате. Сравнительная таблица находится ниже.</p>
+        </div>
+        <div id="longread-intro" class="longread-intro"></div>
+        <div id="longread-toc" class="longread-toc" aria-label="Содержание"></div>
+        <div id="longread-content" class="longread-content"></div>
       </section>
 
       <section id="compare" class="container section-block">
