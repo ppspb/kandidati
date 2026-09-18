@@ -1,0 +1,317 @@
+{
+  "election": {
+    "name": "Выборы депутатов Законодательного Собрания Санкт-Петербурга VIII созыва",
+    "date": "2026-09-18/2026-09-20",
+    "system": "смешанная: 25 одномандатных округов + 25 по партийным спискам (общегородской список + 25 региональных групп)",
+    "gazprom_card_url": "http://izbirkom.ru/election/588148278/",
+    "wikipedia": "https://ru.wikipedia.org/wiki/Выборы_в_Законодательное_собрание_Санкт-Петербурга_(2026)",
+    "as_of": "2026-09-18"
+  },
+  "constituency": {
+    "number": 3,
+    "territory": [
+      "Петроградский район: МО Аптекарский остров, Введенский, Кронверкское, Петровский, Посадский, Чкаловское",
+      "Приморский район: МО Ланское, частично МО Озеро Долгое"
+    ],
+    "voters": 151818,
+    "tik": "ТИК №54",
+    "previous_holder": "В. Макаров (созыв 2016–2021/спикер); 2021 — М. Лабынёва (самовыдвижение)",
+    "other_registered_candidates": [
+      "Федор Агеев (Яблоко)",
+      "Дмитрий Гинтовт (Новые люди) — отказ в регистрации 20.07.2026",
+      "Владислав Горский (Зелёные) — утратил статус"
+    ]
+  },
+  "candidates": [
+    {
+      "full_name": "Гладунов Юрий Николаевич",
+      "party": "Единая Россия",
+      "born": "1956-09-09",
+      "birthplace": "Куйбышев",
+      "single_mandate_constituency": 3,
+      "regional_group": null,
+      "state_duma_constituency": null,
+      "current_positions": [
+        "Депутат ЗакС СПб VII созыва (2021–2026), избран по списку",
+        "Председатель постоянной комиссии ЗакСа по устройству государственной власти, местному самоуправлению и административно-территориальному устройству",
+        "Секретарь политсовета Петроградского районного отделения ЕР",
+        "Член Президиума регионального политсовета ЕР (СПб)"
+      ],
+      "previous_positions": [
+        "1975–1999 — ВС СССР/РФ, полковник запаса",
+        "1999–2011 — глава местной администрации г. Зеленогорск (Кронштадт)",
+        "2011–2016 — глава администрации Петроградского района",
+        "2016–2021 — депутат ЗакС VI созыва (единый округ)"
+      ],
+      "business": [],
+      "social": {
+        "vk": "https://vk.com/dep_gladunov",
+        "max": "https://max.ru/dep_gladunov",
+        "ok": "https://ok.ru/profile/601843707672",
+        "telegram": null,
+        "party_profile": [
+          "https://pg.er.ru/candidate/595",
+          "https://ideputat.er.ru/user/167315"
+        ],
+        "instagram": "https://www.instagram.com/yuri_gladunov/"
+      },
+      "gazprom_card": "http://izbirkom.ru/election/588148278/commission/e6db5e52-02be-4804-8456-38b14ed1af86/candidates/338cee38-5361-447d-97c9-c446ac26d731",
+      "assembly_profile": "https://www.assembly.spb.ru/general/composition/deputies/7th-convocation/gladunov-yuriy-nikolaevich/",
+      "key_sources": [
+        "https://pg.er.ru/candidate/595",
+        "https://ideputat.er.ru/user/167315",
+        "https://www.zaks.ru/new/person/view/1664",
+        "https://www.zaks.ru/new/archive/view/267029",
+        "https://www.zaks.ru/new/archive/view/255611",
+        "https://www.zaks.ru/new/archive/view/268360",
+        "https://www.zaks.ru/new/archive/view/263788",
+        "https://www.assembly.spb.ru/article/633200002/139366/Otchet-press-sluzhby-o-zasedanii-Zakonodatelnogo-Sobraniya-SPb-7-iyulya-2021-goda",
+        "http://zaks.kodeks.net/article/771/157885/SVO-dorogi-bezopasnost-i-obschestvennye-prostranstva",
+        "http://zaks.kodeks.net/authors/show/635510006/voters",
+        "https://www.zaks.ru/new/archive/view/267810",
+        "https://www.zaks.ru/new/archive/view/255960",
+        "https://www.zaks.ru/new/archive/view/266219",
+        "https://www.zaks.ru/new/archive/view/265756",
+        "https://www.zaks.ru/new/archive/view/267011",
+        "https://www.zaks.ru/new/archive/view/263391",
+        "https://spb.er.ru/media/documents/April2026/EuHtwDkcT5ILwlxfr4ry.pdf",
+        "https://spb.er.ru/person/e88a4d8c-4fb6-4f98-83b4-cc8b3be2179c",
+        "https://ideputat.er.ru/user/167315?page=0%2C2",
+        "https://www.instagram.com/yuri_gladunov/",
+        "https://www.zaks.ru/new/archive/view/267512"
+      ],
+      "matrix_gaps": [
+        "систематический срез постов VK/MAX/TG/Instagram 2025–2026",
+        "итоги 20.09.2026",
+        "отчёт о расходах избирательного фонда (ГИК, октябрь 2026)"
+      ],
+      "svo_audit": {
+        "personal_confirmation": "найдено",
+        "attribution_levels": [
+          "личное высказывание",
+          "личное действие"
+        ],
+        "source_urls": [
+          "https://spb.er.ru/activity/news/deputaty-otpravili-85-j-gumanitarnyj-konvoj-v-zonu-svo-i-prifrontovye-regiony",
+          "https://spb.er.ru/activity/news/deputaty-peterburgskogo-parlamenta-dostavili-50-j-konvoj-s-gumanitarnym-gruzom-v-raspolozhenie-leningradskogo-polka",
+          "https://mitropolia.spb.ru/news/parishs/?id=285833",
+          "https://www.zaks.ru/new/archive/view/266304",
+          "https://www.zaks.ru/new/archive/view/267744",
+          "https://www.zaks.ru/new/archive/view/268360"
+        ]
+      }
+    },
+    {
+      "full_name": "Дудоладов Глеб Борисович",
+      "party": "Справедливая Россия",
+      "born": null,
+      "inn": "312003007186",
+      "inn_region": "Белгородская область",
+      "single_mandate_constituency": 3,
+      "regional_group": "СР, 3 территория, №2",
+      "state_duma_constituency": null,
+      "current_positions": [],
+      "previous_positions": [],
+      "business": [
+        "ООО «ПЕТРОДИЗЕЛЬ» (ИНН 7806331716): руководитель и 100% учредитель; оптовая торговля топливом; СПб, Коломяжский пр-т, 33; 4 сотрудника; с 2006",
+        "ООО «КОНСТРУКЦИЯ»: учредитель; строительство жилых и нежилых зданий",
+        "ООО «АВТОПЕТРОЛЕУМ»: учредитель; оптовая торговля топливом; гендиректор — Н.С. Дудоладова (супруга)",
+        "ООО «НЕФТЕХИМ»: учредитель 2005–2011"
+      ],
+      "social": {
+        "vk": null,
+        "max": null,
+        "ok": null,
+        "telegram": null,
+        "party_channels": [
+          "https://t.me/spravPiter",
+          "https://t.me/tihonovaNG"
+        ]
+      },
+      "gazprom_card": "http://izbirkom.ru/election/588148278/commission/e6db5e52-02be-4804-8456-38b14ed1af86/candidates/2489188a-89df-46fc-893b-9e6b5488cbf9",
+      "key_sources": [
+        "https://mr-7.ru/articles/2026/07/05/spravedlivorossy-utverdili-sostav-kandidatov-v-peterburgskie-deputaty-news",
+        "https://unfall.ru/person/312003007186",
+        "https://checko.ru/company/petrodizel-1067847290950",
+        "https://zachestnyibiznes.ru/fl/312003007186",
+        "https://www.zaks.ru/new/archive/view/267807",
+        "https://companies.rbc.ru/id/1067847290950-ooo-petrodizel/",
+        "https://www.zaks.ru/new/archive/view/267543",
+        "https://www.rusprofile.ru/person/dudoladov-gb-312003007186"
+      ],
+      "matrix_gaps": [
+        "ПРОБЕЛ: публичные заявления/программа в кампании 2026",
+        "итоги 20.09.2026",
+        "отчёт о расходах (ГИК, октябрь 2026)",
+        "персональные соцсети и индивидуальная программа 2026 — повторным поиском не подтверждены"
+      ],
+      "svo_audit": {
+        "personal_confirmation": "в проверенных источниках персональное подтверждение не найдено",
+        "attribution_levels": [
+          "не найдено",
+          "партийная активность"
+        ],
+        "party_context_urls": [
+          "https://spravedlivo.ru/16228710",
+          "https://moskva.spravedlivo.ru/28703410",
+          "https://t.me/s/spravPiter/6630",
+          "https://t.me/s/spravPiter/6617",
+          "https://t.me/s/spravPiter/6569"
+        ],
+        "note": "В проверенных источниках персональное подтверждение не найдено. Проверены официальные материалы СР, публичная лента Telegram и направления: высказывания, поездки, конвои, сборы, помощь военнослужащим и ветеранам, мобилизация, контрактная служба, Донбасс, новые регионы, госпитали и волонтёрство. Партийная госпитальная акция в ЛНР подтверждает только партийный контекст: https://t.me/s/spravPiter/6630. Отрицательный результат не означает, что события не было.",
+        "checked_search_urls": [
+          "https://t.me/s/spravPiter?q=%D0%94%D1%83%D0%B4%D0%BE%D0%BB%D0%B0%D0%B4%D0%BE%D0%B2",
+          "https://t.me/s/spravPiter?q=%D0%B3%D1%83%D0%BC%D0%B0%D0%BD%D0%B8%D1%82%D0%B0%D1%80",
+          "https://t.me/s/spravPiter?q=%D0%A1%D0%92%D0%9E",
+          "https://t.me/s/spravPiter?q=%D0%B2%D0%B5%D1%82%D0%B5%D1%80%D0%B0%D0%BD"
+        ]
+      }
+    },
+    {
+      "full_name": "Зверев Артём Александрович",
+      "party": "ЛДПР",
+      "born": "1990-01-02",
+      "birthplace": "Воронеж",
+      "single_mandate_constituency": 3,
+      "regional_group": "ЛДПР, 3 территория, №1",
+      "state_duma_constituency": 213,
+      "current_positions": [
+        "Координатор Петроградского местного отделения ЛДПР",
+        "Директор сети стоматологических клиник"
+      ],
+      "previous_positions": [
+        "В ЛДПР с конца 2009 года"
+      ],
+      "business": [
+        "Сеть стоматологических клиник (юрлица уточнить по ЕГРЮЛ); соучредитель с супругой (Ю. Зверева — главный врач)"
+      ],
+      "social": {
+        "vk": "https://vk.com/zverev_aa",
+        "max": null,
+        "ok": null,
+        "telegram": null,
+        "party_profile": [
+          "https://spb.ldpr.ru/members/sankt_peterburg/zverev-artyem-aleksandrovich/"
+        ],
+        "phone": "+7 812 233-14-78"
+      },
+      "gazprom_card": "http://izbirkom.ru/election/588148278/commission/e6db5e52-02be-4804-8456-38b14ed1af86/candidates/521a8097-1fb7-4327-953f-c349cdb3fe3f",
+      "key_sources": [
+        "https://www.zaks.ru/new/archive/view/267029",
+        "https://www.zaks.ru/new/archive/view/267535",
+        "https://www.zaks.ru/new/archive/view/267388",
+        "https://spb.ldpr.ru/members/sankt_peterburg/zverev-artyem-aleksandrovich/",
+        "https://forpost-sz.ru/a/2026-09-07/spasi-rossiyu-kak-agitiruyut-kandidaty-v-deputaty-v-peterburge",
+        "https://gogov.ru/candidates-sep26/pushkin",
+        "https://spb.ldpr.ru/event/ldpr-predlozhila-vvesti-tryekhletnie-kreditnye-kanikuly-dlya-malogo-biznesa/",
+        "https://www.dp.ru/a/2026/04/15/objasnite-porusski-biznes",
+        "https://www.dp.ru/a/2026/05/06/sezon-premer-i-welcome",
+        "https://www.dp.ru/a/2026/05/12/ne-prosto-zubnaja-tehnika",
+        "https://prodoctorov.ru/spb/lpu/77838-stomatologiya-my-ort-na-moskovskom/",
+        "https://ldprpetrogradskiy.orgs.biz/sendreviews",
+        "https://www.zaks.ru/new/archive/view/267661"
+      ],
+      "matrix_gaps": [
+        "содержание личной страницы VK https://vk.com/zverev_aa — отдельный просмотр и архивирование",
+        "первичные отчёты ГИК по расходам на кампанию в ЗакС по округу №3; найден только журналистский пересказ расходов федеральной кампании по округу №213",
+        "итоги 20.09.2026 (ЗакС и/или ГД)",
+        "индивидуальная программа 2026 с устойчивыми URL отдельных публикаций"
+      ],
+      "svo_audit": {
+        "personal_confirmation": "найдено",
+        "attribution_levels": [
+          "личное высказывание",
+          "личное действие"
+        ],
+        "source_urls": [
+          "https://spb.ldpr.ru/event/prazdnik-vmeste-s-zashchitnikami-otechestva-spb/"
+        ],
+        "party_context_urls": [
+          "https://ldpr.ru/event/448157/"
+        ]
+      }
+    },
+    {
+      "full_name": "Луговской Роман Андреевич",
+      "party": "КПРФ",
+      "born": "1984",
+      "single_mandate_constituency": 3,
+      "regional_group": "КПРФ, 3 территория, №1",
+      "state_duma_constituency": null,
+      "current_positions": [
+        "Первый секретарь Петроградского райкома КПРФ (2026)"
+      ],
+      "previous_positions": [
+        "Секретарь Петроградского райкома КПРФ (2015)",
+        "Кандидат в ЗакС по окр. №3 (VI созыв, 2016)",
+        "№40 в списке КПРФ по единому округу (2016)",
+        "2016: ООО «Уайт-холл–Санкт-Петербург», менеджер по продажам"
+      ],
+      "business": [],
+      "social": {
+        "vk": null,
+        "max": null,
+        "ok": null,
+        "telegram": null,
+        "party_profile": [
+          "https://cprfspb.ru/rajonnye-organizacii/",
+          "https://kprf.ru/party-live/regnews/243282.html"
+        ],
+        "phone": "+7 952 202-39-39",
+        "facebook": "https://www.facebook.com/rlugovskoy/",
+        "x": "https://x.com/roman_lugovskoy"
+      },
+      "gazprom_card": "http://izbirkom.ru/election/588148278/commission/e6db5e52-02be-4804-8456-38b14ed1af86/candidates/af825214-3acc-43b1-9f99-5034a599952f",
+      "key_sources": [
+        "https://cprfspb.ru/rajonnye-organizacii/",
+        "http://old.cprfspb.ru/16156.html",
+        "https://kprf.ru/news/pr/46821.html",
+        "https://kprf.ru/party-live/regnews/243282.html",
+        "http://ppt.ru/person.phtml?id=10158",
+        "https://www.zaks.ru/new/person/view/4827",
+        "https://economy.spbstu.ru/author/3424/",
+        "https://openbooks.itmo.ru/ru/articles/author/614/lugovskoy_r__a_.html",
+        "http://old.cprfspb.ru/13152.html",
+        "http://old.cprfspb.ru/14824.html",
+        "http://old.cprfspb.ru/17814.html",
+        "https://kprf.ru/party-live/regnews/223862.html",
+        "https://candidates.golosinfo.org/p/159512-lugovskoy-roman-andreevich",
+        "https://www.zaks.ru/new/archive/view/267448",
+        "http://old.cprfspb.ru/5589.html",
+        "http://old.cprfspb.ru/5085.html",
+        "https://vestnik.spbik.spb.ru/matrial/160812/%D0%A1%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D0%BA%D0%B0%D0%BD%D0%B4%D0%B8%D0%B4%D0%B0%D1%82%D0%B5%20%D0%9B%D1%83%D0%B3%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B9.pdf",
+        "https://x.com/roman_lugovskoy",
+        "https://www.facebook.com/rlugovskoy/",
+        "https://vk.com/wall-26362316_1704026"
+      ],
+      "matrix_gaps": [
+        "индивидуальные программные заявления именно в кампании 2026 (пресс-центр КПРФ СПб, пикеты, дебаты)",
+        "актуальные биографические и финансовые сведения кандидата за 2026 год",
+        "итоги 20.09.2026",
+        "отчёт о расходах (ГИК, октябрь 2026)",
+        "содержание найденных публичных каналов X и Facebook — отдельный просмотр и архивирование"
+      ],
+      "svo_audit": {
+        "personal_confirmation": "в проверенных источниках персональное подтверждение не найдено",
+        "attribution_levels": [
+          "не найдено",
+          "партийная активность"
+        ],
+        "party_context_urls": [
+          "https://cprfspb.ru/news/sbor-ghumanitarnoi-pomoshchi-zhitieliam-donietska-i-lughanska/",
+          "https://msk.kprf.ru/2026/04/30/286493/",
+          "https://cprfspb.ru/",
+          "https://cprfspb.ru/rajonnye-organizacii/",
+          "https://www.zaks.ru/new/person/view/4827"
+        ],
+        "note": "В проверенных источниках персональное подтверждение не найдено. Проверены официальные материалы КПРФ и петербургского отделения, районная организация, профиль СМИ и направления: высказывания, поездки, конвои, сборы, помощь военнослужащим и ветеранам, мобилизация, контрактная служба, Донбасс, новые регионы, госпитали и волонтёрство. Партийная должность и общие партийные материалы не доказывают личную позицию по СВО. Отрицательный результат не означает, что события не было.",
+        "checked_search_urls": [
+          "https://www.zaks.ru/new/person/view/4827",
+          "https://cprfspb.ru/rajonnye-organizacii/",
+          "https://cprfspb.ru/",
+          "https://www.zaks.ru/new/archive/view/267807"
+        ]
+      }
+    }
+  ]
+}

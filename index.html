@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8fafc">
+    <meta name="color-scheme" content="light">
+    <meta name="description" content="Простой справочник о кандидатах в Законодательное собрание Санкт-Петербурга по округу №3.">
+    <title>Кандидаты округа №3 — честное сравнение</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">К содержанию</a>
+    <main id="main-content">
+      <section id="top" class="hero container">
+        <div class="hero-copy">
+          <p class="eyebrow">Выборы в Санкт-Петербурге · 18–20 сентября 2026</p>
+          <h1>Кандидаты округа №3.<br><span>Сравнение без лишнего.</span></h1>
+          <p class="lead">Простой справочник о четырёх кандидатах. Здесь можно увидеть их слова и действия, открыть источники и понять, что пока не удалось проверить.</p>
+          <p class="hero-source">Округ и выборы: <a href="https://www.zaks.ru/new/archive/view/267807" target="_blank" rel="noopener">материал о кандидатах</a> · <a href="https://ru.wikipedia.org/wiki/Выборы_в_Законодательное_собрание_Санкт-Петербурга_(2026)" target="_blank" rel="noopener">справка о выборах</a>.</p>
+          <div class="hero-actions">
+            <a href="#longread" role="button">Читать подробный разбор</a>
+            <a href="#compare" role="button" class="secondary outline">Сравнить по вопросам</a>
+          </div>
+        </div>
+        <aside class="principles-card" aria-label="Принципы справочника">
+          <p class="eyebrow">Три простых правила</p>
+          <ul class="principles">
+            <li><span>01</span><div><strong>Одни вопросы для всех</strong><small>Так сравнение получается честнее.</small></div></li>
+            <li><span>02</span><div><strong>Нет данных — не значит «против»</strong><small>Мы не додумываем ответ за кандидата.</small></div></li>
+            <li><span>03</span><div><strong>У каждого факта есть ссылка</strong><small>Можно открыть страницу и проверить его.</small></div></li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="container stats" aria-label="О справочнике">
+        <article class="stat-card"><strong id="stat-candidates">—</strong><span>кандидата</span></article>
+        <article class="stat-card"><strong id="stat-topics">—</strong><span>вопросов для сравнения</span></article>
+        <article class="stat-card"><strong id="stat-raw-topics">—</strong><span>тематических меток</span></article>
+        <article class="stat-card"><strong id="stat-evidence">—</strong><span>фактов со ссылками</span></article>
+      </section>
+
+      <section id="top-filter" class="container top-filter-section" aria-labelledby="top-filter-title">
+        <details class="top-filter-panel" open>
+          <summary>
+            <span class="eyebrow">Фильтр страницы</span>
+            <strong id="top-filter-title">Показывать сведения о кандидатах</strong>
+            <small>Можно выбрать одного или нескольких кандидатов. Общие сведения об округе останутся на странице.</small>
+          </summary>
+          <fieldset id="candidate-filter">
+            <legend>Выберите кандидатов</legend>
+            <div class="grid candidate-filter-grid">
+              <label><input type="checkbox" data-candidate="gladunov" checked> Юрий Гладунов <small>Единая Россия</small></label>
+              <label><input type="checkbox" data-candidate="dudoladov" checked> Глеб Дудоладов <small>Справедливая Россия</small></label>
+              <label><input type="checkbox" data-candidate="zverev" checked> Артём Зверев <small>ЛДПР</small></label>
+              <label><input type="checkbox" data-candidate="lugovskoy" checked> Роман Луговской <small>КПРФ</small></label>
+            </div>
+          </fieldset>
+          <div class="top-filter-actions">
+            <button type="button" class="secondary outline" data-filter-action="all">Показать всех</button>
+            <span id="candidate-filter-status" class="filter-status" role="status" aria-live="polite">Показаны все 4 кандидата.</span>
+          </div>
+        </details>
+      </section>
+
+      <section id="longread" class="container section-block longread-section">
+        <div class="section-heading longread-heading">
+          <div>
+            <p class="eyebrow">Подробный разбор</p>
+            <h2>Округ, выборы и кандидаты</h2>
+          </div>
+          <p class="section-intro">Это основная часть сайта. Здесь собраны общие сведения, хронология и одинаковые главы о каждом кандидате. Сравнительная таблица находится ниже.</p>
+        </div>
+        <div id="longread-intro" class="longread-intro"></div>
+        <div id="longread-toc" class="longread-toc" aria-label="Содержание"></div>
+        <div id="longread-content" class="longread-content"></div>
+      </section>
+
+      <section id="compare" class="container section-block">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Сравнение</p>
+            <h2>Что говорят кандидаты</h2>
+          </div>
+          <p class="section-intro">Выберите тему и откройте ссылки. Пустая ячейка означает только одно: личного ответа в проверенных источниках не найдено.</p>
+        </div>
+
+        <div class="controls" aria-label="Фильтры сравнения">
+          <label>
+            Тема
+            <select id="topic-filter">
+              <option value="all">Все темы</option>
+            </select>
+          </label>
+          <label>
+            Какие записи показать
+            <select id="evidence-filter">
+              <option value="all">Все записи</option>
+              <option value="personal">Только слова и дела кандидатов</option>
+              <option value="party">Только позиция партии</option>
+              <option value="needs-review">Нужно проверить</option>
+            </select>
+          </label>
+          <label class="search-field">
+            Поиск
+            <input id="search" type="search" placeholder="Например: бюджет или ЖКХ">
+          </label>
+        </div>
+
+        <div class="compare-tools">
+          <p class="results-note" id="compare-status" role="status" aria-live="polite">Загружаем данные…</p>
+          <button type="button" class="secondary outline disclosure-toggle" id="disclosure-toggle" aria-expanded="false" aria-controls="comparison-list">Показать все темы</button>
+        </div>
+        <div id="comparison-list" class="comparison-list"></div>
+      </section>
+
+      <section id="candidates" class="container section-block">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Профили</p>
+            <h2>Кто эти кандидаты</h2>
+          </div>
+          <p class="section-intro">Здесь собраны подтверждённые роли, опыт, партийный и деловой контекст, публичные каналы и пробелы поиска. Большая карточка не означает лучшего кандидата.</p>
+        </div>
+        <div id="candidate-grid" class="candidate-grid"></div>
+      </section>
+
+      <section id="ledger" class="container section-block ledger-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Полный список</p>
+            <h2>Все факты и ссылки</h2>
+          </div>
+          <p class="section-intro">Здесь находятся все собранные записи, в том числе общий контекст. У каждой записи есть ссылка на конкретную страницу.</p>
+        </div>
+        <details class="ledger-details">
+          <summary>Показать весь список <span class="ledger-count" id="ledger-count">(загрузка…)</span></summary>
+          <div id="ledger-list" class="ledger-list"></div>
+        </details>
+      </section>
+
+      <section class="container section-block accountability-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Проверка обещаний</p>
+            <h2>Как оценивать слова и дела</h2>
+          </div>
+          <p class="section-intro">Для каждого утверждения полезно задать три простых вопроса.</p>
+        </div>
+        <div class="accountability-grid">
+          <article>
+            <span class="step-number">01</span>
+            <h3>Что именно сказано?</h3>
+            <p>Ищем точную цитату, дату и обстоятельства. Не смешиваем выборы в ЗакС и федеральную кампанию.</p>
+          </article>
+          <article>
+            <span class="step-number">02</span>
+            <h3>Кто отвечает за это?</h3>
+            <p>Проверяем, может ли это сделать ЗакС, муниципалитет или другой орган власти.</p>
+          </article>
+          <article>
+            <span class="step-number">03</span>
+            <h3>Что сделано?</h3>
+            <p>Внести проект, проголосовать и принять закон — разные шаги. Для каждого нужна отдельная ссылка.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="method" class="container section-block method-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Подсказки</p>
+            <h2>Как читать сайт</h2>
+          </div>
+        </div>
+        <div class="method-grid">
+          <details open>
+            <summary>Откуда взялась запись?</summary>
+            <dl class="legend-list">
+              <div><dt><span class="badge badge-personal">Личное</span></dt><dd>Кандидат сам это сказал или сделал.</dd></div>
+              <div><dt><span class="badge badge-collective">Вместе</span></dt><dd>Это сделали несколько депутатов.</dd></div>
+              <div><dt><span class="badge badge-party">Партия</span></dt><dd>Так говорит или действует партия. Это не личная программа кандидата.</dd></div>
+              <div><dt><span class="badge badge-media">СМИ</span></dt><dd>Это пересказ журналиста. Откройте источник для деталей.</dd></div>
+            </dl>
+          </details>
+          <details>
+            <summary>Что значит «не найдено»?</summary>
+            <p>Мы не нашли личного подтверждения в тех источниках, которые проверили. Это не значит, что события не было. И это не значит, что кандидат «против».</p>
+            <p>Старые материалы, публикации партии и сведения о компаниях могут быть полезны. Поэтому мы показываем их отдельно.</p>
+          </details>
+          <details>
+            <summary>Почему нет общей оценки?</summary>
+            <p>У кандидатов разное количество публикаций и доступных архивов. Число найденных материалов не показывает, кто лучше. Выберите важные для вас темы и сами откройте источники.</p>
+          </details>
+        </div>
+        <div class="method-footer">
+          <p><strong>Подробнее о работе:</strong> <a href="docs/information_architecture_2026-09-18.md">методика</a> · <a href="docs/profile_context_audit_2026-09-18.md">отчёт о поиске</a> · <a href="data/matriks.csv">полный список записей</a>.</p>
+          <p class="muted">Это статический сайт. Он загружает данные из файлов и не требует сервера.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>Кандидаты · округ №3</span>
+        <span>Данные проверены: 18.09.2026</span>
+      </div>
+    </footer>
+    <script src="app.js" defer></script>
+  </body>
+</html>
