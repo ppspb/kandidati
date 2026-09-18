@@ -93,7 +93,9 @@ VIII созыва, голосование **18–20 сентября 2026**) т�
 - `app.js` — клиентская логика без фреймворка и сборки;
 - `data/matriks.csv`, `data/issue_taxonomy.csv`, `data/candidates.json` — файлы, которые сайт загружает относительно адреса страницы.
 
-Pico CSS подключается dependency-free через CDN: [`@picocss/pico@2/css/pico.min.css`](https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css). Собственные пути к данным не начинаются с `/`, поэтому сайт рассчитан в том числе на публикацию в подпути GitHub Pages вида `https://USERNAME.github.io/REPOSITORY/`.
+Интерфейс показывает все 8 одинаковых вопросов по четырём кандидатам, а записи, ещё не привязанные к вопроснику, доступны в раскрывающемся полном реестре. На мобильном первый экран не занят верхним меню: вопросы представлены компактными раскрывающимися блоками, а доказательства открываются по требованию. Кнопка «Раскрыть все вопросы» оставляет быстрый доступ к полному сравнению.
+
+Pico CSS подключается dependency-free через CDN по рекомендованному в официальной документации шаблону: [`@picocss/pico@2/css/pico.min.css`](https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css). Собственные пути к данным не начинаются с `/`, поэтому сайт рассчитан в том числе на публикацию в подпути GitHub Pages вида `https://USERNAME.github.io/REPOSITORY/`.
 
 ### Локальный просмотр
 
@@ -112,4 +114,6 @@ python3 -m http.server 8000 --bind 0.0.0.0
 3. В разделе **Build and deployment** выберите **Deploy from a branch**, нужную ветку и папку `/ (root)`, затем сохраните настройку.
 4. После публикации откройте адрес Pages. Файл `index.html` должен находиться в корне выбранной ветки; отдельная сборка или backend не нужны.
 
-Актуальная последовательность настройки описана в [официальной документации GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site). Если проект публикуется из ветки `main` после слияния, в настройках Pages выбирайте `main`; для отдельного предпросмотра GitHub Pages может быть выбрана текущая ветка. Проверяйте, что на опубликованном URL открываются `styles.css`, `app.js` и файлы из `data/`: при ошибке загрузки сайт явно сообщит о проблеме.
+Актуальная последовательность создания сайта описана в [официальной документации GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site), а настройка источника публикации — в [документации о publishing source](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site). Для project site адрес имеет вид `https://OWNER.github.io/REPOSITORY/`; GitHub допускает публикацию из любой существующей ветки и `/ (root)` или `/docs`, поэтому для основного сайта после слияния выбирайте `main` и `/ (root)`. GitHub Pages всё равно выполняет внутренний deployment workflow, но проекту не нужен собственный build step.
+
+После сохранения настройки откройте **Visit site** в **Settings → Pages**. Публикация может занять до 10 минут; это указано в [официальной инструкции просмотра опубликованного сайта](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site#viewing-your-published-site). Проверяйте, что на опубликованном URL открываются `styles.css`, `app.js` и файлы из `data/`: при ошибке загрузки сайт явно сообщит о проблеме.

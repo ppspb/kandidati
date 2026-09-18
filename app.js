@@ -31,7 +31,8 @@
     selectedCandidates: new Set(candidateOrder.map((candidate) => candidate.id)),
     topic: "all",
     evidence: "all",
-    search: ""
+    search: "",
+    allIssuesOpen: false
   };
 
   const $ = (selector) => document.querySelector(selector);
@@ -186,6 +187,41 @@
     </div>`;
   }
 
+  function renderLedger() {
+    const ledger = $("#ledger-list");
+    if (!ledger) return;
+    $("#ledger-count").textContent = `(${state.claims.length} записей)`;
+    ledger.innerHTML = state.claims.map((row) => {
+      const attribution = classifyAttribution(row);
+      const subject = row.kandidat === "все" ? "Общий контекст" : row.kandidat;
+      return `<article class="ledger-entry">
+        <div class="ledger-entry-head">
+          <strong>${escapeHtml(subject)}</strong>
+          <span class="badge badge-${escapeHtml(attribution)}">${escapeHtml(attributionLabel(attribution))}</span>
+        </div>
+        <p class="ledger-topic">${escapeHtml(row.tema)} · ${escapeHtml(row.data)}</p>
+        <p>${escapeHtml(row.utverzhdenie)}</p>
+        ${row.citata ? `<p class="quote">${escapeHtml(row.citata)}</p>` : ""}
+        <div class="ledger-entry-foot">
+          <span class="badge badge-muted">${escapeHtml(row.status || "статус не указан")}</span>
+          ${renderSource(row)}
+        </div>
+      </article>`;
+    }).join("");
+  }
+
+  function setAllIssuesOpen(open) {
+    state.allIssuesOpen = open;
+    document.querySelectorAll("#comparison-list details.issue-card").forEach((issue) => {
+      issue.open = open;
+    });
+    const toggle = $("#disclosure-toggle");
+    if (toggle) {
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.textContent = open ? "Свернуть все вопросы" : "Раскрыть все вопросы";
+    }
+  }
+
   function renderComparison() {
     const list = $("#comparison-list");
     const selectedIssues = state.topic === "all" ? state.issues : state.issues.filter((issue) => issue.issue_id === state.topic);
@@ -224,13 +260,19 @@
           return candidateClaims.map(renderClaim).join("");
         }).join("");
 
-      cards.push(`<article class="issue-card">
-        <div class="issue-heading">
-          <div><h3>${escapeHtml(issue.question_text)}</h3><p>${escapeHtml(issue.assembly_competence_note)} ${renderExternalSource(issue.competence_source_url, "Основание полномочия", `Источник полномочия для ${issue.category}`)}</p></div>
-          <span class="issue-code">${escapeHtml(issue.issue_id)}</span>
-        </div>
+      cards.push(`<details class="issue-card" data-issue-id="${escapeHtml(issue.issue_id)}"${state.allIssuesOpen ? " open" : ""}>
+        <summary class="issue-summary">
+          <span class="issue-summary-copy">
+            <span class="issue-code">${escapeHtml(issue.issue_id)}</span>
+            <span>
+              <span class="issue-title" role="heading" aria-level="3">${escapeHtml(issue.question_text)}</span>
+              <span class="issue-competence">${escapeHtml(issue.assembly_competence_note)}</span>
+            </span>
+          </span>
+        </summary>
+        <p class="issue-source">${renderExternalSource(issue.competence_source_url, "Источник полномочия", `Источник полномочия для ${issue.category}`)}</p>
         <div class="evidence-grid">${cells}</div>
-      </article>`);
+      </details>`);
     });
 
     list.innerHTML = cards.length ? cards.join("") : `<div class="error-card">По текущим фильтрам ничего не найдено. Попробуйте показать все уровни атрибуции или очистить поиск.</div>`;
@@ -311,6 +353,9 @@
       button.setAttribute("aria-pressed", String(state.selectedCandidates.has(id)));
       renderComparison();
     });
+    $("#disclosure-toggle").addEventListener("click", () => {
+      setAllIssuesOpen(!state.allIssuesOpen);
+    });
   }
 
   async function loadData() {
@@ -350,6 +395,8 @@
       renderCandidateSwitcher();
       renderComparison();
       renderCandidates();
+      renderLedger();
+      setAllIssuesOpen(state.allIssuesOpen);
       bindControls();
     } catch (error) {
       showError(error);

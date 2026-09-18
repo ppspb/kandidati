@@ -4,30 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f8fafc">
+    <meta name="color-scheme" content="light">
     <meta name="description" content="Проверяемое сравнение кандидатов в Законодательное собрание Санкт-Петербурга по округу №3.">
     <title>Кандидаты округа №3 — честное сравнение</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <a class="skip-link" href="#main-content">К содержанию</a>
-    <header class="site-header">
-      <nav class="container nav-wrap" aria-label="Основная навигация">
-        <a class="brand" href="#top" aria-label="На главную">
-          <span class="brand-mark" aria-hidden="true">№3</span>
-          <span>
-            <strong>Кандидаты</strong>
-            <small>округ №3 · Санкт-Петербург</small>
-          </span>
-        </a>
-        <ul class="nav-links">
-          <li><a href="#compare">Сравнить</a></li>
-          <li><a href="#candidates">Кандидаты</a></li>
-          <li><a href="#method">Как читать</a></li>
-        </ul>
-      </nav>
-    </header>
-
     <main id="main-content">
       <section id="top" class="hero container">
         <div class="hero-copy">
@@ -89,7 +74,10 @@
         </div>
 
         <div class="candidate-switcher" id="candidate-switcher" aria-label="Фильтр кандидатов"></div>
-        <p class="results-note" id="compare-status" role="status" aria-live="polite">Загружаем проверенные записи…</p>
+        <div class="compare-tools">
+          <p class="results-note" id="compare-status" role="status" aria-live="polite">Загружаем проверенные записи…</p>
+          <button type="button" class="secondary outline disclosure-toggle" id="disclosure-toggle" aria-expanded="false" aria-controls="comparison-list">Раскрыть все вопросы</button>
+        </div>
         <div id="comparison-list" class="comparison-list"></div>
       </section>
 
@@ -104,10 +92,24 @@
         <div id="candidate-grid" class="candidate-grid"></div>
       </section>
 
+      <section id="ledger" class="container section-block ledger-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Слой 3 · полнота реестра</p>
+            <h2>Все записи и источники</h2>
+          </div>
+          <p class="section-intro">Здесь доступны все строки исходной матрицы, включая общий контекст и материалы, которые ещё не привязаны к одному из восьми вопросов. Каждая строка ведёт на конкретный URL.</p>
+        </div>
+        <details class="ledger-details">
+          <summary>Открыть весь реестр <span class="ledger-count" id="ledger-count">(загрузка…)</span></summary>
+          <div id="ledger-list" class="ledger-list"></div>
+        </details>
+      </section>
+
       <section class="container section-block accountability-section">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Слой 3 · подотчётность</p>
+            <p class="eyebrow">Слой 4 · подотчётность</p>
             <h2>Как читать обещания и действия</h2>
           </div>
           <p class="section-intro">Публичная версия не выносит моральный вердикт. Она показывает цепочку: заявление → полномочие → действие → наблюдаемый результат.</p>
@@ -134,7 +136,7 @@
       <section id="method" class="container section-block method-section">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Слой 4 · прозрачность</p>
+            <p class="eyebrow">Слой 5 · прозрачность</p>
             <h2>Как пользоваться справочником</h2>
           </div>
         </div>
