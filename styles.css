@@ -580,6 +580,118 @@ h1 span {
   font-weight: 750;
 }
 
+.profile-sections {
+  display: grid;
+  gap: .9rem;
+  margin-top: .9rem;
+}
+
+.profile-subsection {
+  padding-top: .75rem;
+  border-top: 1px solid var(--line);
+}
+
+.profile-subsection h4 {
+  margin: 0 0 .4rem;
+  color: var(--ink);
+  font-size: .78rem;
+  letter-spacing: .01em;
+}
+
+.profile-subsection p,
+.profile-subsection li {
+  font-size: .78rem;
+  line-height: 1.42;
+}
+
+.profile-subsection p {
+  margin: .35rem 0 0;
+}
+
+.profile-subsection ul {
+  margin: .35rem 0 0;
+  padding-left: 1rem;
+}
+
+.profile-subsection li {
+  margin-bottom: .3rem;
+}
+
+.profile-links {
+  overflow-wrap: anywhere;
+}
+
+.profile-links li {
+  list-style: none;
+  margin-left: -1rem;
+}
+
+.profile-links span {
+  color: var(--muted);
+}
+
+.profile-label {
+  display: block;
+  margin-top: .6rem;
+  color: var(--muted);
+  font-size: .67rem;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.profile-empty {
+  color: var(--muted);
+}
+
+.candidate-card .profile-records {
+  margin-top: .75rem;
+  padding-top: .75rem;
+  border-top: 1px solid var(--line);
+}
+
+.profile-records summary {
+  color: var(--blue);
+  font-size: .78rem;
+  font-weight: 750;
+}
+
+.profile-record-list {
+  display: grid;
+  gap: .55rem;
+  margin-top: .65rem;
+}
+
+.profile-record {
+  padding: .65rem;
+  border: 1px solid var(--line);
+  border-radius: .6rem;
+  background: #fbfcfd;
+}
+
+.profile-record p {
+  margin: .35rem 0 0;
+}
+
+.audit-note {
+  padding: .85rem;
+  border-radius: .7rem;
+  background: var(--soft);
+  font-size: .78rem;
+}
+
+.audit-note p {
+  margin: .35rem 0 0;
+}
+
+.audit-found {
+  border-left: 3px solid var(--teal);
+}
+
+.audit-empty {
+  border-left: 3px solid var(--amber);
+}
+
 .profile-list {
   display: grid;
   gap: .7rem;

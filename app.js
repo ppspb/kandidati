@@ -287,14 +287,78 @@
     return tracks.join(" · ");
   }
 
+  function isPartyContext(text) {
+    const value = String(text || "").toLowerCase();
+    return ["единая россия", "лдпр", "кпрф", "парт", "райком", "районного отделения", "секретарь политсовета", "координатор"].some((token) => value.includes(token));
+  }
+
+  function renderItems(items, emptyText = "Отдельной записи нет.") {
+    const values = (items || []).filter(Boolean);
+    return values.length ? `<ul>${values.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : `<p class="profile-empty">${escapeHtml(emptyText)}</p>`;
+  }
+
+  function renderProfileLinks(urls, candidate, limit = null) {
+    const values = [...new Set((urls || []).filter((url) => typeof url === "string" && /^https?:\/\//.test(url)))];
+    const visible = limit ? values.slice(0, limit) : values;
+    return visible.length ? `<ul class="profile-links">${visible.map((url) => `<li>${renderExternalSource(url, url, `Открыть источник профиля ${candidate.short}`)}</li>`).join("")}</ul>` : `<p class="profile-empty">Источник не указан в профиле.</p>`;
+  }
+
+  function renderSocial(candidate) {
+    const social = candidate.social || {};
+    const personal = [];
+    const party = [];
+    const labels = { vk: "VK", max: "MAX", ok: "Одноклассники", telegram: "Telegram", facebook: "Facebook", x: "X" };
+    Object.entries(social).forEach(([key, value]) => {
+      if (typeof value === "string" && /^https?:\/\//.test(value)) {
+        (key === "party_profile" || key === "party_channels" ? party : personal).push({ label: labels[key] || key, url: value });
+      } else if (Array.isArray(value)) {
+        value.filter((url) => typeof url === "string" && /^https?:\/\//.test(url)).forEach((url) => party.push({ label: key === "party_channels" ? "Партийный канал" : "Партийный профиль", url }));
+      }
+    });
+    const personalHtml = personal.length ? `<ul class="profile-links">${personal.map((item) => `<li><span>${escapeHtml(item.label)}:</span> ${renderExternalSource(item.url, item.url, `Открыть публичный канал ${candidate.short}`)}</li>`).join("")}</ul>` : `<p class="profile-empty">В проверенных источниках персональный публичный канал не найден.</p>`;
+    const partyHtml = party.length ? `<ul class="profile-links">${party.map((item) => `<li><span>${escapeHtml(item.label)}:</span> ${renderExternalSource(item.url, item.url, `Открыть партийный канал ${candidate.short}`)}</li>`).join("")}</ul>` : "";
+    return `<div class="profile-subsection"><strong>Персональные публичные каналы</strong>${personalHtml}</div>${partyHtml ? `<div class="profile-subsection"><strong>Партийные каналы</strong>${partyHtml}</div>` : ""}`;
+  }
+
+  function renderSvoAudit(candidate) {
+    const audit = candidate.svo_audit || {};
+    const found = audit.personal_confirmation === "найдено";
+    const auditSources = found ? audit.source_urls : audit.party_context_urls;
+    const checked = audit.checked_search_urls || [];
+    return `<div class="audit-note ${found ? "audit-found" : "audit-empty"}">
+      <strong>Отдельная проверка материалов по СВО</strong>
+      <p>${found ? "В проверенных источниках персональное подтверждение найдено." : "В проверенных источниках персональное подтверждение не найдено. Это не означает, что события не было."}</p>
+      ${auditSources?.length ? `<span class="profile-label">Связанные источники</span>${renderProfileLinks(auditSources, candidate)}` : ""}
+      ${!found && checked.length ? `<span class="profile-label">Проверенные поисковые страницы</span>${renderProfileLinks(checked, candidate)}` : ""}
+    </div>`;
+  }
+
+  function renderCandidateRecords(rows) {
+    return `<details class="profile-records">
+      <summary>Все записи кандидата в матрице (${rows.length})</summary>
+      <div class="profile-record-list">${rows.map((row) => `<article class="profile-record">
+        <div class="ledger-entry-head"><strong>${escapeHtml(row.tema)}</strong><span class="badge badge-${escapeHtml(classifyAttribution(row))}">${escapeHtml(attributionLabel(classifyAttribution(row)))}</span></div>
+        <p>${escapeHtml(row.utverzhdenie)}</p>
+        ${row.citata ? `<p class="quote">${escapeHtml(row.citata)}</p>` : ""}
+        <div class="ledger-entry-foot"><span class="badge badge-muted">${escapeHtml(row.status || "статус не указан")}</span>${renderSource(row)}</div>
+      </article>`).join("")}</div>
+    </details>`;
+  }
+
   function renderCandidateCard(candidate) {
     const allRows = state.claims.filter((row) => candidateIdFromName(row.kandidat) === candidate.id);
     const mappedIssues = state.issues.filter((issue) => issueClaims(issue.issue_id).some((row) => candidateIdFromName(row.kandidat) === candidate.id)).length;
     const personalRows = allRows
       .filter((row) => ["personal", "collective"].includes(classifyAttribution(row)))
       .sort((a, b) => String(b.data).localeCompare(String(a.data)))
-      .slice(0, 2);
-    const currentPositions = (candidate.current_positions || []).slice(0, 2);
+      .slice(0, 3);
+    const positions = candidate.current_positions || [];
+    const previousPositions = candidate.previous_positions || [];
+    const roleItems = positions.filter((item) => !isPartyContext(item));
+    const partyItems = positions.filter(isPartyContext);
+    const previousRoleItems = previousPositions.filter((item) => !isPartyContext(item));
+    const previousPartyItems = previousPositions.filter(isPartyContext);
+    const gaps = candidate.matrix_gaps || [];
 
     return `<article class="candidate-card">
       <span class="eyebrow">${escapeHtml(candidate.party || "Кандидат")}</span>
@@ -303,13 +367,20 @@
       <p class="candidate-role">${escapeHtml(shortRole(candidate) || "Участник выборов по округу №3")}</p>
       <p class="coverage-note"><strong>${mappedIssues}/${state.issues.length}</strong> тем имеют кодированную запись в текущем реестре. Это показатель покрытия данных, а не оценка кандидата.</p>
       <details>
-        <summary>Показать профиль и последние записи</summary>
-        <dl class="profile-list">
-          ${currentPositions.length ? `<div><dt>Текущие роли</dt><dd><ul>${currentPositions.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></dd></div>` : ""}
-          <div><dt>Личные записи в реестре</dt><dd>${personalRows.length ? personalRows.map((row) => `<p><strong>${escapeHtml(row.tema)}:</strong> ${escapeHtml(row.utverzhdenie)} ${renderSource(row)}</p>`).join("") : "В текущем реестре не выделено личных записей для этой карточки."}</dd></div>
-          <div><dt>Ключевые источники профиля</dt><dd><ul>${(candidate.key_sources || []).slice(0, 4).map((url) => `<li>${renderExternalSource(url, url, `Открыть источник профиля ${candidate.short}`)}</li>`).join("")}</ul></dd></div>
-          <div><dt>Полный профиль данных</dt><dd><a href="data/candidates.json" target="_blank" rel="noopener">Машиночитаемый профиль</a></dd></div>
-        </dl>
+        <summary>Показать индивидуальный контекст</summary>
+        <div class="profile-sections">
+          <section class="profile-subsection"><h4>Роли и занятия</h4>${renderItems(roleItems, "В профиле нет отдельной записи о текущей непартийной роли.")}</section>
+          <section class="profile-subsection"><h4>Партийный контекст</h4>${renderItems(partyItems, "Отдельная партийная роль в профиле не указана.")}</section>
+          <section class="profile-subsection"><h4>Предыдущий опыт</h4>${renderItems([...previousRoleItems, ...previousPartyItems], "Историческая запись в профиле не указана.")}</section>
+          <section class="profile-subsection"><h4>Деловой контекст</h4>${renderItems(candidate.business, "В профиле отдельные бизнес-сведения не указаны.")}</section>
+          <section class="profile-subsection"><h4>Публичные каналы</h4>${renderSocial(candidate)}</section>
+          <section class="profile-subsection"><h4>Личные записи в матрице</h4>${personalRows.length ? personalRows.map((row) => `<p><strong>${escapeHtml(row.tema)}:</strong> ${escapeHtml(row.utverzhdenie)} ${renderSource(row)}</p>`).join("") : `<p class="profile-empty">В текущем реестре персональная запись по кандидату не выделена.</p>`}</section>
+          ${renderCandidateRecords(allRows)}
+          ${renderSvoAudit(candidate)}
+          ${gaps.length ? `<section class="profile-subsection"><h4>Что ещё требует поиска</h4>${renderItems(gaps)}</section>` : ""}
+          <section class="profile-subsection"><h4>Источники профиля</h4>${renderProfileLinks(candidate.key_sources, candidate)}</section>
+          <section class="profile-subsection"><h4>Полный профиль данных</h4><p><a href="data/candidates.json" target="_blank" rel="noopener">Машиночитаемый JSON-профиль</a></p></section>
+        </div>
       </details>
     </article>`;
   }

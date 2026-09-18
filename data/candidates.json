@@ -69,7 +69,11 @@
         "http://zaks.kodeks.net/authors/show/635510006/voters",
         "https://www.zaks.ru/new/archive/view/267810",
         "https://www.zaks.ru/new/archive/view/255960",
-        "https://www.zaks.ru/new/archive/view/266219"
+        "https://www.zaks.ru/new/archive/view/266219",
+        "https://www.zaks.ru/new/archive/view/265756",
+        "https://www.zaks.ru/new/archive/view/267011",
+        "https://www.zaks.ru/new/archive/view/263391",
+        "https://spb.er.ru/media/documents/April2026/EuHtwDkcT5ILwlxfr4ry.pdf"
       ],
       "matrix_gaps": [
         "посты VK/MAX/TG 2025–2026 (еженедельный срез)",
@@ -126,13 +130,15 @@
         "https://checko.ru/company/petrodizel-1067847290950",
         "https://zachestnyibiznes.ru/fl/312003007186",
         "https://www.zaks.ru/new/archive/view/267807",
-        "https://companies.rbc.ru/id/1067847290950-ooo-petrodizel/"
+        "https://companies.rbc.ru/id/1067847290950-ooo-petrodizel/",
+        "https://www.zaks.ru/new/archive/view/267543",
+        "https://www.rusprofile.ru/person/dudoladov-gb-312003007186"
       ],
       "matrix_gaps": [
-        "персональные соцсети (VK/TG) — не найдены в открытых источниках",
         "ПРОБЕЛ: публичные заявления/программа в кампании 2026",
         "итоги 20.09.2026",
-        "отчёт о расходах (ГИК, октябрь 2026)"
+        "отчёт о расходах (ГИК, октябрь 2026)",
+        "персональные соцсети и индивидуальная программа 2026 — повторным поиском не подтверждены"
       ],
       "svo_audit": {
         "personal_confirmation": "в проверенных источниках персональное подтверждение не найдено",
@@ -197,7 +203,8 @@
         "https://www.dp.ru/a/2026/05/06/sezon-premer-i-welcome",
         "https://www.dp.ru/a/2026/05/12/ne-prosto-zubnaja-tehnika",
         "https://prodoctorov.ru/spb/lpu/77838-stomatologiya-my-ort-na-moskovskom/",
-        "https://ldprpetrogradskiy.orgs.biz/sendreviews"
+        "https://ldprpetrogradskiy.orgs.biz/sendreviews",
+        "https://www.zaks.ru/new/archive/view/267661"
       ],
       "matrix_gaps": [
         "содержание личной страницы VK https://vk.com/zverev_aa — отдельный просмотр и архивирование",
@@ -246,7 +253,8 @@
           "https://kprf.ru/party-live/regnews/243282.html"
         ],
         "phone": "+7 952 202-39-39",
-        "facebook": "https://www.facebook.com/rlugovskoy/"
+        "facebook": "https://www.facebook.com/rlugovskoy/",
+        "x": "https://x.com/roman_lugovskoy"
       },
       "gazprom_card": "http://izbirkom.ru/election/588148278/commission/e6db5e52-02be-4804-8456-38b14ed1af86/candidates/af825214-3acc-43b1-9f99-5034a599952f",
       "key_sources": [
@@ -266,14 +274,16 @@
         "https://www.zaks.ru/new/archive/view/267448",
         "http://old.cprfspb.ru/5589.html",
         "http://old.cprfspb.ru/5085.html",
-        "https://vestnik.spbik.spb.ru/matrial/160812/%D0%A1%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D0%BA%D0%B0%D0%BD%D0%B4%D0%B8%D0%B4%D0%B0%D1%82%D0%B5%20%D0%9B%D1%83%D0%B3%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B9.pdf"
+        "https://vestnik.spbik.spb.ru/matrial/160812/%D0%A1%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D0%BA%D0%B0%D0%BD%D0%B4%D0%B8%D0%B4%D0%B0%D1%82%D0%B5%20%D0%9B%D1%83%D0%B3%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B9.pdf",
+        "https://x.com/roman_lugovskoy",
+        "https://www.facebook.com/rlugovskoy/"
       ],
       "matrix_gaps": [
         "индивидуальные программные заявления именно в кампании 2026 (пресс-центр КПРФ СПб, пикеты, дебаты)",
         "актуальные биографические и финансовые сведения кандидата за 2026 год",
-        "содержание личной страницы Facebook https://www.facebook.com/rlugovskoy/ — отдельный просмотр и архивирование",
         "итоги 20.09.2026",
-        "отчёт о расходах (ГИК, октябрь 2026)"
+        "отчёт о расходах (ГИК, октябрь 2026)",
+        "содержание найденных публичных каналов X и Facebook — отдельный просмотр и архивирование"
       ],
       "svo_audit": {
         "personal_confirmation": "в проверенных источниках персональное подтверждение не найдено",
