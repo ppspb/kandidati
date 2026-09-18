@@ -133,34 +133,21 @@
     return ids.map((id) => state.claimsById.get(id)).filter(Boolean);
   }
 
-  function candidateStatus(count) {
-    if (count === 1) return "Показан 1 кандидат.";
-    if (count < 5) return `Показаны ${count} кандидата.`;
-    return `Показаны ${count} кандидатов.`;
-  }
-
-  function renderTopCandidateFilter() {
-    const filter = $("#candidate-filter");
-    if (!filter) return;
-    filter.innerHTML = candidateOrder.map((orderItem) => {
-      const candidate = state.candidateById.get(orderItem.id) || orderItem;
-      const checked = state.selectedCandidates.has(orderItem.id);
-      return `<label class="candidate-filter-option">
-        <input type="checkbox" data-candidate="${escapeHtml(orderItem.id)}" ${checked ? "checked" : ""}>
-        <span><strong>${escapeHtml(candidate.short)}</strong><small>${escapeHtml(candidate.party || "Партия не указана")}</small></span>
-      </label>`;
-    }).join("");
+  function updateCandidateFilterStatus() {
+    document.querySelectorAll("#candidate-filter input[data-candidate]").forEach((input) => {
+      input.checked = state.selectedCandidates.has(input.dataset.candidate);
+    });
     const count = state.selectedCandidates.size;
     const status = $("#candidate-filter-status");
-    if (status) {
-      status.textContent = count === candidateOrder.length
-        ? `Показаны все ${count} кандидата.`
-        : candidateStatus(count);
-    }
+    if (!status) return;
+    if (count === candidateOrder.length) status.textContent = `Показаны все ${count} кандидата.`;
+    else if (count === 1) status.textContent = "Показан 1 кандидат.";
+    else if (count < 5) status.textContent = `Показаны ${count} кандидата.`;
+    else status.textContent = `Показаны ${count} кандидатов.`;
   }
 
   function rerenderFilteredViews() {
-    renderTopCandidateFilter();
+    updateCandidateFilterStatus();
     renderLongread();
     renderComparison();
     renderCandidates();
@@ -651,7 +638,7 @@
       $("#stat-raw-topics").textContent = new Set(data.claims.map((claim) => claim.tema).filter(Boolean)).size;
       $("#stat-evidence").textContent = data.claims.length;
       $("#topic-filter").insertAdjacentHTML("beforeend", data.issues.map((issue) => `<option value="${escapeHtml(issue.issue_id)}">${escapeHtml(issue.category)}</option>`).join(""));
-      renderTopCandidateFilter();
+      updateCandidateFilterStatus();
       renderLongread();
       renderComparison();
       renderCandidates();

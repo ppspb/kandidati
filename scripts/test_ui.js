@@ -113,6 +113,7 @@ function candidateTarget(id, checked) {
 (async () => {
   await waitForRender();
 
+  const page = fs.readFileSync("index.html", "utf8");
   const filter = elements.get("candidate-filter");
   const status = elements.get("candidate-filter-status");
   const longread = elements.get("longread-content");
@@ -121,14 +122,15 @@ function candidateTarget(id, checked) {
   const ledgerCount = elements.get("ledger-count");
 
   // Initial page state and longread.
-  assert.match(filter.innerHTML, /Юрий Гладунов/);
-  assert.match(filter.innerHTML, /Единая Россия/);
-  assert.match(filter.innerHTML, /Глеб Дудоладов/);
-  assert.match(filter.innerHTML, /Справедливая Россия/);
-  assert.match(filter.innerHTML, /Артём Зверев/);
-  assert.match(filter.innerHTML, /ЛДПР/);
-  assert.match(filter.innerHTML, /Роман Луговской/);
-  assert.match(filter.innerHTML, /КПРФ/);
+  assert.match(page, /id="candidate-filter"/);
+  assert.match(page, /Юрий Гладунов/);
+  assert.match(page, /Единая Россия/);
+  assert.match(page, /Глеб Дудоладов/);
+  assert.match(page, /Справедливая Россия/);
+  assert.match(page, /Артём Зверев/);
+  assert.match(page, /ЛДПР/);
+  assert.match(page, /Роман Луговской/);
+  assert.match(page, /КПРФ/);
   assert.equal(String(elements.get("stat-candidates").textContent), "4");
   assert.equal(String(elements.get("stat-topics").textContent), "8");
   assert.equal(String(elements.get("stat-raw-topics").textContent), "79");
@@ -139,7 +141,7 @@ function candidateTarget(id, checked) {
   assert.match(comparison.innerHTML, /ISS08/);
   assert.match(cards.innerHTML, /Глеб Дудоладов/);
   assert.equal(ledgerCount.textContent, "(96 записей)");
-  assert.match(status.textContent, /все 4 кандидата/);
+  assert.match(status.textContent, /Показаны все 4 кандидата\./);
 
   // Multi-select: leave only Gladunov and Zverev.
   filter.dispatch("change", { target: candidateTarget("dudoladov", false) });
@@ -168,7 +170,7 @@ function candidateTarget(id, checked) {
 
   // Restore all candidates with the top control.
   allFilterButton.dispatch("click");
-  assert.match(status.textContent, /все 4 кандидата/);
+  assert.match(status.textContent, /Показаны все 4 кандидата\./);
   assert.match(longread.innerHTML, /longread-candidate-lugovskoy/);
   assert.equal(ledgerCount.textContent, "(96 записей)");
 

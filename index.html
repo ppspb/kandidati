@@ -43,20 +43,26 @@
       </section>
 
       <section id="top-filter" class="container top-filter-section" aria-labelledby="top-filter-title">
-        <div class="top-filter-copy">
-          <p class="eyebrow">Фильтр страницы</p>
-          <h2 id="top-filter-title">Показывать сведения о:</h2>
-          <p>Можно выбрать одного или нескольких кандидатов. Общие сведения об округе останутся на странице.</p>
-        </div>
-        <div class="top-filter-box">
-          <fieldset id="candidate-filter" class="candidate-filter">
-            <legend class="visually-hidden">Выберите кандидатов</legend>
+        <details class="top-filter-panel" open>
+          <summary>
+            <span class="eyebrow">Фильтр страницы</span>
+            <strong id="top-filter-title">Показывать сведения о кандидатах</strong>
+            <small>Можно выбрать одного или нескольких кандидатов. Общие сведения об округе останутся на странице.</small>
+          </summary>
+          <fieldset id="candidate-filter">
+            <legend>Выберите кандидатов</legend>
+            <div class="grid candidate-filter-grid">
+              <label><input type="checkbox" data-candidate="gladunov" checked> Юрий Гладунов <small>Единая Россия</small></label>
+              <label><input type="checkbox" data-candidate="dudoladov" checked> Глеб Дудоладов <small>Справедливая Россия</small></label>
+              <label><input type="checkbox" data-candidate="zverev" checked> Артём Зверев <small>ЛДПР</small></label>
+              <label><input type="checkbox" data-candidate="lugovskoy" checked> Роман Луговской <small>КПРФ</small></label>
+            </div>
           </fieldset>
           <div class="top-filter-actions">
             <button type="button" class="secondary outline" data-filter-action="all">Показать всех</button>
-            <p id="candidate-filter-status" class="filter-status" role="status" aria-live="polite">Загружаем список кандидатов…</p>
+            <span id="candidate-filter-status" class="filter-status" role="status" aria-live="polite">Показаны все 4 кандидата.</span>
           </div>
-        </div>
+        </details>
       </section>
 
       <section id="longread" class="container section-block longread-section">
