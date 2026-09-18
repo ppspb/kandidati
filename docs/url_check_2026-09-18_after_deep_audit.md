@@ -1,0 +1,75 @@
+Локальная проверка: OK — все строки матрицы и каталога имеют полный URL
+Всего уникальных ссылок: 68
+
+код    wayback    URL
+0      —          http://izbirkom.ru/election/588148278/
+0      —          http://izbirkom.ru/election/588148278/commission/e6db5e52-02be-4804-8456-38b14ed1af86/candidates/2489188a-89df-46fc-893b-9e6b5488cbf9
+0      —          http://izbirkom.ru/election/588148278/commission/e6db5e52-02be-4804-8456-38b14ed1af86/candidates/338cee38-5361-447d-97c9-c446ac26d731
+0      —          http://izbirkom.ru/election/588148278/commission/e6db5e52-02be-4804-8456-38b14ed1af86/candidates/521a8097-1fb7-4327-953f-c349cdb3fe3f
+0      —          http://izbirkom.ru/election/588148278/commission/e6db5e52-02be-4804-8456-38b14ed1af86/candidates/af825214-3acc-43b1-9f99-5034a599952f
+0      —          http://old.cprfspb.ru/16156.html
+0      —          http://ppt.ru/person.phtml?id=10158
+0      —          http://zaks.kodeks.net/article/771/102192/Yuriy-Gladunov-Rabota-v-tesnom-kontakte-s-zhitelyami---vazhneyshaya-sostavlyayuschaya-raboty-deputata
+0      —          https://checko.ru/company/avtopetroleum-1089847177309
+0      —          https://checko.ru/company/petrodizel-1067847290950
+0      —          https://cprfspb.ru/news/sbor-ghumanitarnoi-pomoshchi-zhitieliam-donietska-i-lughanska/
+0      —          https://cprfspb.ru/rajonnye-organizacii/
+0      —          https://forpost-sz.ru/a/2026-09-07/spasi-rossiyu-kak-agitiruyut-kandidaty-v-deputaty-v-peterburge
+0      —          https://gogov.ru/candidates-sep26/pushkin
+0      —          https://ideputat.er.ru/user/167315
+0      —          https://kprf.ru/news/pr/46821.html
+0      —          https://kprf.ru/party-live/regnews/243282.html
+0      —          https://ldpr.ru/event/448157/
+0      —          https://max.ru/dep_gladunov
+0      —          https://mitropolia.spb.ru/news/parishs/?id=285833
+0      —          https://moskva.spravedlivo.ru/28703410
+0      —          https://mr-7.ru/articles/2026/07/05/spravedlivorossy-utverdili-sostav-kandidatov-v-peterburgskie-deputaty-news
+0      —          https://mr-7.ru/articles/2026/07/23/sentiabr-2026-gid-po-vyboram-v-peterburge
+0      —          https://msk.kprf.ru/2026/04/30/286493/
+0      —          https://neva.today/news/2022/11/1/402004
+0      —          https://ok.ru/profile/601843707672
+0      —          https://pg.er.ru/candidate/595
+0      —          https://pg.er.ru/candidate/639/events/10184
+0      —          https://ru.wikipedia.org/wiki/Выборы_в_Законодательное_собрание_Санкт-Петербурга_(2026)
+0      —          https://samara.ldpr.ru/event/zadacha-ldpr-zabota-o-veteranakh-svo-smr63/
+0      —          https://spark-interfax.ru/sankt-peterburg-primorski/ooo-petrodizel-inn-7806331716-ogrn-1067847290950-1ac2b11e6c1c4f3f8d0649c8aed83d01
+0      —          https://spb.er.ru/activity/news/deputaty-otpravili-85-j-gumanitarnyj-konvoj-v-zonu-svo-i-prifrontovye-regiony
+0      —          https://spb.er.ru/activity/news/deputaty-peterburgskogo-parlamenta-dostavili-50-j-konvoj-s-gumanitarnym-gruzom-v-raspolozhenie-leningradskogo-polka
+0      —          https://spb.er.ru/activity/news/yurij-gladunov-i-vladimir-shamahov-budut-uchastvovat-v-predvaritelnom-golosovanii-edinoj-rossii-v-petrogradskom-rajone
+0      —          https://spb.ldpr.ru/event/prazdnik-vmeste-s-zashchitnikami-otechestva-spb/
+0      —          https://spb.ldpr.ru/members/sankt_peterburg/zverev-artyem-aleksandrovich/
+0      —          https://spbdnevnik.ru/news/2026-07-20/v-peterburge-nazvali-chislo-vydvinutykh-i-zaregistrirovannykh-kandidatov-na-vybory-2026-goda
+0      —          https://spbformat.ru/main/debatov-net-no-vrode-est-kak-prohodit-kampaniya-po-vyboram-v-zaks/
+0      —          https://spravedlivo.ru/16228710
+0      —          https://st-petersburg.izbirkom.ru/election/588148278/
+0      —          https://t.me/s/spravPiter/6630
+0      —          https://t.me/s/spravPiter?q=%D0%94%D1%83%D0%B4%D0%BE%D0%BB%D0%B0%D0%B4%D0%BE%D0%B2
+0      —          https://t.me/spravPiter
+0      —          https://t.me/tihonovaNG
+0      —          https://t.me/zaksru
+0      —          https://unfall.ru/person/312003007186
+0      —          https://vk.com/club43962110
+0      —          https://vk.com/dep_gladunov
+0      —          https://vybor-naroda.org/lentanovostey/309947-spravorossy-vydvinuli-kandidatov-v-zaksobranie-peterburga.html
+0      —          https://web.archive.org/web/20231023232341/https:/spb.er.ru/activity/news/deputaty-edinorossy-peterburga-pobyvali-v-zone-svo-i-mariupole-chtoby-peredat-pomosh-i-skazat-slova-podderzhki-voennym-i-zhitelyam
+0      —          https://www.assembly.spb.ru/general/composition/deputies/7th-convocation/gladunov-yuriy-nikolaevich/
+0      —          https://www.rbc.ru/companies/id/1067847290950-ooo-petrodizel/
+0      —          https://www.spb.kp.ru/daily/277782/5248201/
+0      —          https://www.zaks.ru/new/archive/view/255611
+0      —          https://www.zaks.ru/new/archive/view/260474
+0      —          https://www.zaks.ru/new/archive/view/266304
+0      —          https://www.zaks.ru/new/archive/view/267029
+0      —          https://www.zaks.ru/new/archive/view/267388
+0      —          https://www.zaks.ru/new/archive/view/267744
+0      —          https://www.zaks.ru/new/archive/view/267807
+0      —          https://www.zaks.ru/new/archive/view/268360
+0      —          https://www.zaks.ru/new/archive/view/268938
+0      —          https://www.zaks.ru/new/archive/view/268942
+0      —          https://www.zaks.ru/new/archive/view/268957
+0      —          https://www.zaks.ru/new/election/map/
+0      —          https://www.zaks.ru/new/person/view/1664
+0      —          https://www.zaks.ru/new/topic/882/
+0      —          https://zachestnyibiznes.ru/fl/312003007186
+
+Доступно: 0, проблемно/мёртво: 68
+Для проблемных ссылок используйте снапшоты Wayback или проверку в обычном браузере: бот-защита избиркомов/VK часто срабатывает на скрипты.
