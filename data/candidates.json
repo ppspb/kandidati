@@ -52,7 +52,8 @@
         "party_profile": [
           "https://pg.er.ru/candidate/595",
           "https://ideputat.er.ru/user/167315"
-        ]
+        ],
+        "instagram": "https://www.instagram.com/yuri_gladunov/"
       },
       "gazprom_card": "http://izbirkom.ru/election/588148278/commission/e6db5e52-02be-4804-8456-38b14ed1af86/candidates/338cee38-5361-447d-97c9-c446ac26d731",
       "assembly_profile": "https://www.assembly.spb.ru/general/composition/deputies/7th-convocation/gladunov-yuriy-nikolaevich/",
@@ -73,10 +74,14 @@
         "https://www.zaks.ru/new/archive/view/265756",
         "https://www.zaks.ru/new/archive/view/267011",
         "https://www.zaks.ru/new/archive/view/263391",
-        "https://spb.er.ru/media/documents/April2026/EuHtwDkcT5ILwlxfr4ry.pdf"
+        "https://spb.er.ru/media/documents/April2026/EuHtwDkcT5ILwlxfr4ry.pdf",
+        "https://spb.er.ru/person/e88a4d8c-4fb6-4f98-83b4-cc8b3be2179c",
+        "https://ideputat.er.ru/user/167315?page=0%2C2",
+        "https://www.instagram.com/yuri_gladunov/",
+        "https://www.zaks.ru/new/archive/view/267512"
       ],
       "matrix_gaps": [
-        "посты VK/MAX/TG 2025–2026 (еженедельный срез)",
+        "систематический срез постов VK/MAX/TG/Instagram 2025–2026",
         "итоги 20.09.2026",
         "отчёт о расходах избирательного фонда (ГИК, октябрь 2026)"
       ],
@@ -276,7 +281,8 @@
         "http://old.cprfspb.ru/5085.html",
         "https://vestnik.spbik.spb.ru/matrial/160812/%D0%A1%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D0%BA%D0%B0%D0%BD%D0%B4%D0%B8%D0%B4%D0%B0%D1%82%D0%B5%20%D0%9B%D1%83%D0%B3%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B9.pdf",
         "https://x.com/roman_lugovskoy",
-        "https://www.facebook.com/rlugovskoy/"
+        "https://www.facebook.com/rlugovskoy/",
+        "https://vk.com/wall-26362316_1704026"
       ],
       "matrix_gaps": [
         "индивидуальные программные заявления именно в кампании 2026 (пресс-центр КПРФ СПб, пикеты, дебаты)",
