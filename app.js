@@ -469,7 +469,11 @@
 
   function renderLongread() {
     const config = state.longread;
-    if (!config) return;
+    const fallback = $("#longread-content");
+    if (!config) {
+      if (fallback) fallback.innerHTML = `<div class="error-card">Подробный текст временно недоступен. Фильтр и сравнение кандидатов всё равно работают.</div>`;
+      return;
+    }
     const intro = $("#longread-intro");
     const toc = $("#longread-toc");
     const content = $("#longread-content");
@@ -601,25 +605,35 @@
 
   async function loadData() {
     const base = document.baseURI;
-    const [matrixResponse, candidatesResponse, issuesResponse, longreadResponse] = await Promise.all([
+    const [matrixResponse, candidatesResponse, issuesResponse] = await Promise.all([
       fetch(new URL("data/matriks.csv", base)),
       fetch(new URL("data/candidates.json", base)),
-      fetch(new URL("data/issue_taxonomy.csv", base)),
-      fetch(new URL("data/longread_sections.json", base))
+      fetch(new URL("data/issue_taxonomy.csv", base))
     ]);
-    if (!matrixResponse.ok || !candidatesResponse.ok || !issuesResponse.ok || !longreadResponse.ok) throw new Error("Не удалось загрузить один из файлов данных.");
-    const [matrixText, candidateData, issueText, longreadData] = await Promise.all([
+    if (!matrixResponse.ok || !candidatesResponse.ok || !issuesResponse.ok) throw new Error("Не удалось загрузить основные файлы данных.");
+    const [matrixText, candidateData, issueText] = await Promise.all([
       matrixResponse.text(),
       candidatesResponse.json(),
-      issuesResponse.text(),
-      longreadResponse.json()
+      issuesResponse.text()
     ]);
+
+    let longreadData = null;
+    try {
+      const longreadResponse = await fetch(new URL("data/longread_sections.json", base));
+      if (longreadResponse.ok) longreadData = await longreadResponse.json();
+      else console.warn("Не удалось загрузить структуру лонгрида.");
+    } catch (error) {
+      console.warn("Структура лонгрида недоступна:", error);
+    }
+
     return { claims: parseCsv(matrixText), candidates: parseCandidates(candidateData), issues: parseCsv(issueText), longread: longreadData };
   }
 
   function showError(error) {
     $("#comparison-list").innerHTML = `<div class="error-card"><strong>Не удалось загрузить данные.</strong><br>Откройте сайт через HTTP или HTTPS, а не как файл на компьютере. Если ошибка повторится, проверьте папку <code>data/</code>.<br><small>${escapeHtml(error.message)}</small></div>`;
     $("#compare-status").textContent = "Ошибка загрузки";
+    const filterStatus = $("#candidate-filter-status");
+    if (filterStatus) filterStatus.textContent = "Не удалось загрузить список кандидатов.";
   }
 
   async function init() {
