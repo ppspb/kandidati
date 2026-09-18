@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Проверка ссылок и структуры источников матрицы.
+"""Проверка ссылок и структуры матрицы, каталога источников и вопросника.
 
 По умолчанию скрипт пытается открыть все URL и для ошибок ищет Wayback-снапшот.
 Флаг ``--syntax-only`` запускает локальную проверку без сети: у каждой строки
@@ -49,6 +49,7 @@ def validate_local_files() -> list[str]:
     checks = (
         ("data/matriks.csv", "source_url"),
         ("data/sources_catalog.csv", "url"),
+        ("data/issue_taxonomy.csv", "competence_source_url"),
     )
     for rel, field in checks:
         path = ROOT / rel
@@ -95,7 +96,8 @@ def wayback_snapshot(url: str, timeout: int = 20) -> str:
 def collect_urls():
     urls = {}
     for rel, field in (("data/matriks.csv", "source_url"),
-                       ("data/sources_catalog.csv", "url")):
+                       ("data/sources_catalog.csv", "url"),
+                       ("data/issue_taxonomy.csv", "competence_source_url")):
         path = ROOT / rel
         if not path.exists():
             continue
@@ -113,7 +115,7 @@ def main():
         print("Локальная проверка: ОШИБКИ")
         print("\n".join(errors))
         return 2
-    print("Локальная проверка: OK — все строки матрицы и каталога имеют полный URL")
+    print("Локальная проверка: OK — все строки матрицы, каталога и вопросника имеют полный URL")
     if "--syntax-only" in sys.argv:
         return 0
 
