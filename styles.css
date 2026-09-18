@@ -1526,3 +1526,145 @@ body {
     padding-top: 0;
   }
 }
+
+/* Page-wide candidate filter */
+.top-filter-section {
+  position: sticky;
+  top: .75rem;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: minmax(250px, .7fr) minmax(0, 1.3fr);
+  gap: 1.25rem;
+  align-items: center;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+  padding: 1rem 1.15rem;
+  border: 1px solid #cbd9ff;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 10px 30px rgba(31, 53, 76, .1);
+  backdrop-filter: blur(10px);
+}
+
+.top-filter-copy h2 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.5vw, 1.7rem);
+  line-height: 1.15;
+}
+
+.top-filter-copy p:last-child {
+  max-width: 430px;
+  margin: .4rem 0 0;
+  color: var(--muted);
+  font-size: .88rem;
+  line-height: 1.45;
+}
+
+.candidate-filter {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .55rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.candidate-filter-option {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  min-width: 0;
+  margin: 0;
+  padding: .55rem .65rem;
+  border: 1px solid var(--line);
+  border-radius: .65rem;
+  background: #fbfcfd;
+  cursor: pointer;
+}
+
+.candidate-filter-option:has(input:checked) {
+  border-color: #9db7ff;
+  background: var(--blue-soft);
+}
+
+.candidate-filter-option input {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.candidate-filter-option span {
+  display: grid;
+  min-width: 0;
+  gap: .08rem;
+}
+
+.candidate-filter-option strong,
+.candidate-filter-option small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.candidate-filter-option strong {
+  color: var(--ink);
+  font-size: .86rem;
+}
+
+.candidate-filter-option small {
+  color: var(--muted);
+  font-size: .74rem;
+}
+
+.top-filter-actions {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-top: .65rem;
+}
+
+.top-filter-actions button {
+  width: auto;
+  min-height: 2.25rem;
+  margin: 0;
+  padding: .35rem .65rem;
+  font-size: .8rem;
+}
+
+.filter-status {
+  margin: 0;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@media (max-width: 760px) {
+  .top-filter-section {
+    position: static;
+    grid-template-columns: 1fr;
+    gap: .75rem;
+    margin-bottom: 3rem;
+  }
+
+  .candidate-filter {
+    grid-template-columns: 1fr;
+  }
+
+  .top-filter-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .top-filter-actions button {
+    width: 100%;
+  }
+}

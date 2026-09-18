@@ -42,6 +42,23 @@
         <article class="stat-card"><strong id="stat-evidence">—</strong><span>фактов со ссылками</span></article>
       </section>
 
+      <section id="top-filter" class="container top-filter-section" aria-labelledby="top-filter-title">
+        <div class="top-filter-copy">
+          <p class="eyebrow">Фильтр страницы</p>
+          <h2 id="top-filter-title">Показывать сведения о:</h2>
+          <p>Можно выбрать одного или нескольких кандидатов. Общие сведения об округе останутся на странице.</p>
+        </div>
+        <div class="top-filter-box">
+          <fieldset id="candidate-filter" class="candidate-filter">
+            <legend class="visually-hidden">Выберите кандидатов</legend>
+          </fieldset>
+          <div class="top-filter-actions">
+            <button type="button" class="secondary outline" data-filter-action="all">Показать всех</button>
+            <p id="candidate-filter-status" class="filter-status" role="status" aria-live="polite">Загружаем список кандидатов…</p>
+          </div>
+        </div>
+      </section>
+
       <section id="longread" class="container section-block longread-section">
         <div class="section-heading longread-heading">
           <div>
@@ -86,7 +103,6 @@
           </label>
         </div>
 
-        <div class="candidate-switcher" id="candidate-switcher" aria-label="Фильтр кандидатов"></div>
         <div class="compare-tools">
           <p class="results-note" id="compare-status" role="status" aria-live="polite">Загружаем данные…</p>
           <button type="button" class="secondary outline disclosure-toggle" id="disclosure-toggle" aria-expanded="false" aria-controls="comparison-list">Показать все темы</button>

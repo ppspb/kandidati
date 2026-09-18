@@ -133,6 +133,40 @@
     return ids.map((id) => state.claimsById.get(id)).filter(Boolean);
   }
 
+  function candidateStatus(count) {
+    if (count === 1) return "Показан 1 кандидат.";
+    if (count < 5) return `Показаны ${count} кандидата.`;
+    return `Показаны ${count} кандидатов.`;
+  }
+
+  function renderTopCandidateFilter() {
+    const filter = $("#candidate-filter");
+    if (!filter) return;
+    filter.innerHTML = candidateOrder.map((orderItem) => {
+      const candidate = state.candidateById.get(orderItem.id) || orderItem;
+      const checked = state.selectedCandidates.has(orderItem.id);
+      return `<label class="candidate-filter-option">
+        <input type="checkbox" data-candidate="${escapeHtml(orderItem.id)}" ${checked ? "checked" : ""}>
+        <span><strong>${escapeHtml(candidate.short)}</strong><small>${escapeHtml(candidate.party || "Партия не указана")}</small></span>
+      </label>`;
+    }).join("");
+    const count = state.selectedCandidates.size;
+    const status = $("#candidate-filter-status");
+    if (status) {
+      status.textContent = count === candidateOrder.length
+        ? `Показаны все ${count} кандидата.`
+        : candidateStatus(count);
+    }
+  }
+
+  function rerenderFilteredViews() {
+    renderTopCandidateFilter();
+    renderLongread();
+    renderComparison();
+    renderCandidates();
+    renderLedger();
+  }
+
   function rowMatchesFilters(row) {
     const candidateId = candidateIdFromName(row.kandidat);
     if (candidateId && !state.selectedCandidates.has(candidateId)) return false;
@@ -214,8 +248,9 @@
   function renderLedger() {
     const ledger = $("#ledger-list");
     if (!ledger) return;
-    $("#ledger-count").textContent = `(${state.claims.length} записей)`;
-    ledger.innerHTML = state.claims.map((row) => {
+    const visibleClaims = state.claims.filter((row) => row.kandidat === "все" || state.selectedCandidates.has(candidateIdFromName(row.kandidat)));
+    $("#ledger-count").textContent = `(${visibleClaims.length} записей)`;
+    ledger.innerHTML = visibleClaims.map((row) => {
       const attribution = classifyAttribution(row);
       const subject = row.kandidat === "все" ? "Общие сведения" : row.kandidat;
       return `<article class="ledger-entry">
@@ -423,7 +458,7 @@
 
   function renderLongreadTimeline() {
     const rows = state.claims
-      .filter((row) => row.kandidat !== "все" && row.data && /^2026/.test(row.data) && configThemesForTimeline().includes(row.tema))
+      .filter((row) => row.kandidat !== "все" && state.selectedCandidates.has(candidateIdFromName(row.kandidat)) && row.data && /^2026/.test(row.data) && configThemesForTimeline().includes(row.tema))
       .sort((a, b) => String(a.data).localeCompare(String(b.data)));
     if (!rows.length) return "";
     return `<section id="longread-timeline" class="longread-chapter">
@@ -445,7 +480,7 @@
       <li><a href="#longread-elections">Округ и правила выборов</a></li>
       <li><a href="#longread-timeline">Хронология кампании</a></li>
       <li><a href="#longread-candidates">Кандидаты</a></li>
-      ${candidateOrder.map((candidate) => `<li><a href="#longread-candidate-${escapeHtml(candidate.id)}">${escapeHtml(candidate.short)}</a></li>`).join("")}
+      ${candidateOrder.filter((candidate) => state.selectedCandidates.has(candidate.id)).map((candidate) => `<li><a href="#longread-candidate-${escapeHtml(candidate.id)}">${escapeHtml(candidate.short)}</a></li>`).join("")}
       <li><a href="#compare">Сравнение по вопросам</a></li>
       <li><a href="#ledger">Все источники</a></li>
     </ol>`;
@@ -458,7 +493,8 @@
       </section>`;
     }).join("");
 
-    const candidateChapters = `<section id="longread-candidates" class="longread-candidates"><div class="longread-chapter-heading"><p class="eyebrow">Глава 3</p><h3>Четыре кандидата</h3><p>У каждого профиля один и тот же порядок. Сначала опыт, затем кампании, работа с жителями, бизнес и публичные действия. Партийные материалы помечены отдельно.</p></div>${candidateOrder.map((orderItem) => {
+    const selectedCandidateOrder = candidateOrder.filter((candidate) => state.selectedCandidates.has(candidate.id));
+    const candidateChapters = `<section id="longread-candidates" class="longread-candidates"><div class="longread-chapter-heading"><p class="eyebrow">Глава 3</p><h3>Кандидаты</h3><p>У каждого профиля один и тот же порядок. Сначала опыт, затем кампании, работа с жителями, бизнес и публичные действия. Партийные материалы помечены отдельно.</p></div>${selectedCandidateOrder.map((orderItem) => {
       const candidate = state.candidateById.get(orderItem.id);
       if (!candidate) return "";
       const rows = state.claims.filter((row) => candidateIdFromName(row.kandidat) === candidate.id);
@@ -522,18 +558,11 @@
 
   function renderCandidates() {
     $("#candidate-grid").innerHTML = candidateOrder
+      .filter((orderItem) => state.selectedCandidates.has(orderItem.id))
       .map((orderItem) => state.candidateById.get(orderItem.id))
       .filter(Boolean)
       .map(renderCandidateCard)
       .join("");
-  }
-
-  function renderCandidateSwitcher() {
-    $("#candidate-switcher").innerHTML = candidateOrder.map((orderItem) => {
-      const candidate = state.candidateById.get(orderItem.id) || orderItem;
-      const pressed = state.selectedCandidates.has(orderItem.id);
-      return `<button type="button" data-candidate="${escapeHtml(orderItem.id)}" aria-pressed="${pressed}">${escapeHtml(candidate.short)}</button>`;
-    }).join("");
   }
 
   function bindControls() {
@@ -549,15 +578,21 @@
       state.search = event.target.value;
       renderComparison();
     });
-    $("#candidate-switcher").addEventListener("click", (event) => {
-      const button = event.target.closest("button[data-candidate]");
-      if (!button) return;
-      const id = button.dataset.candidate;
-      if (state.selectedCandidates.has(id) && state.selectedCandidates.size === 1) return;
-      if (state.selectedCandidates.has(id)) state.selectedCandidates.delete(id);
-      else state.selectedCandidates.add(id);
-      button.setAttribute("aria-pressed", String(state.selectedCandidates.has(id)));
-      renderComparison();
+    $("#candidate-filter").addEventListener("change", (event) => {
+      const checkbox = event.target.closest("input[data-candidate]");
+      if (!checkbox) return;
+      const id = checkbox.dataset.candidate;
+      if (!checkbox.checked && state.selectedCandidates.size === 1) {
+        checkbox.checked = true;
+        return;
+      }
+      if (checkbox.checked) state.selectedCandidates.add(id);
+      else state.selectedCandidates.delete(id);
+      rerenderFilteredViews();
+    });
+    document.querySelector("[data-filter-action=\"all\"]")?.addEventListener("click", () => {
+      state.selectedCandidates = new Set(candidateOrder.map((candidate) => candidate.id));
+      rerenderFilteredViews();
     });
     $("#disclosure-toggle").addEventListener("click", () => {
       setAllIssuesOpen(!state.allIssuesOpen);
@@ -602,8 +637,8 @@
       $("#stat-raw-topics").textContent = new Set(data.claims.map((claim) => claim.tema).filter(Boolean)).size;
       $("#stat-evidence").textContent = data.claims.length;
       $("#topic-filter").insertAdjacentHTML("beforeend", data.issues.map((issue) => `<option value="${escapeHtml(issue.issue_id)}">${escapeHtml(issue.category)}</option>`).join(""));
+      renderTopCandidateFilter();
       renderLongread();
-      renderCandidateSwitcher();
       renderComparison();
       renderCandidates();
       renderLedger();
