@@ -66,7 +66,10 @@
         "https://www.zaks.ru/new/archive/view/263788",
         "https://www.assembly.spb.ru/article/633200002/139366/Otchet-press-sluzhby-o-zasedanii-Zakonodatelnogo-Sobraniya-SPb-7-iyulya-2021-goda",
         "http://zaks.kodeks.net/article/771/157885/SVO-dorogi-bezopasnost-i-obschestvennye-prostranstva",
-        "http://zaks.kodeks.net/authors/show/635510006/voters"
+        "http://zaks.kodeks.net/authors/show/635510006/voters",
+        "https://www.zaks.ru/new/archive/view/267810",
+        "https://www.zaks.ru/new/archive/view/255960",
+        "https://www.zaks.ru/new/archive/view/266219"
       ],
       "matrix_gaps": [
         "посты VK/MAX/TG 2025–2026 (еженедельный срез)",
@@ -122,7 +125,8 @@
         "https://unfall.ru/person/312003007186",
         "https://checko.ru/company/petrodizel-1067847290950",
         "https://zachestnyibiznes.ru/fl/312003007186",
-        "https://www.zaks.ru/new/archive/view/267807"
+        "https://www.zaks.ru/new/archive/view/267807",
+        "https://companies.rbc.ru/id/1067847290950-ooo-petrodizel/"
       ],
       "matrix_gaps": [
         "персональные соцсети (VK/TG) — не найдены в открытых источниках",
@@ -192,13 +196,14 @@
         "https://www.dp.ru/a/2026/04/15/objasnite-porusski-biznes",
         "https://www.dp.ru/a/2026/05/06/sezon-premer-i-welcome",
         "https://www.dp.ru/a/2026/05/12/ne-prosto-zubnaja-tehnika",
-        "https://prodoctorov.ru/spb/lpu/77838-stomatologiya-my-ort-na-moskovskom/"
+        "https://prodoctorov.ru/spb/lpu/77838-stomatologiya-my-ort-na-moskovskom/",
+        "https://ldprpetrogradskiy.orgs.biz/sendreviews"
       ],
       "matrix_gaps": [
-        "содержание личной страницы VK https://vk.com/zverev_aa — отдельный просмотр и архивирование постов",
-        "материалы кампании по окр. №213 (ГД)",
+        "содержание личной страницы VK https://vk.com/zverev_aa — отдельный просмотр и архивирование",
+        "первичные отчёты ГИК по расходам на кампанию в ЗакС по округу №3; найден только журналистский пересказ расходов федеральной кампании по округу №213",
         "итоги 20.09.2026 (ЗакС и/или ГД)",
-        "отчёт о расходах (ГИК, октябрь 2026)"
+        "индивидуальная программа 2026 с устойчивыми URL отдельных публикаций"
       ],
       "svo_audit": {
         "personal_confirmation": "найдено",
@@ -260,10 +265,12 @@
         "https://candidates.golosinfo.org/p/159512-lugovskoy-roman-andreevich",
         "https://www.zaks.ru/new/archive/view/267448",
         "http://old.cprfspb.ru/5589.html",
-        "http://old.cprfspb.ru/5085.html"
+        "http://old.cprfspb.ru/5085.html",
+        "https://vestnik.spbik.spb.ru/matrial/160812/%D0%A1%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D0%BA%D0%B0%D0%BD%D0%B4%D0%B8%D0%B4%D0%B0%D1%82%D0%B5%20%D0%9B%D1%83%D0%B3%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B9.pdf"
       ],
       "matrix_gaps": [
         "индивидуальные программные заявления именно в кампании 2026 (пресс-центр КПРФ СПб, пикеты, дебаты)",
+        "актуальные биографические и финансовые сведения кандидата за 2026 год",
         "содержание личной страницы Facebook https://www.facebook.com/rlugovskoy/ — отдельный просмотр и архивирование",
         "итоги 20.09.2026",
         "отчёт о расходах (ГИК, октябрь 2026)"
