@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8fafc">
+    <meta name="description" content="Проверяемое сравнение кандидатов в Законодательное собрание Санкт-Петербурга по округу №3.">
+    <title>Кандидаты округа №3 — честное сравнение</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">К содержанию</a>
+    <header class="site-header">
+      <nav class="container nav-wrap" aria-label="Основная навигация">
+        <a class="brand" href="#top" aria-label="На главную">
+          <span class="brand-mark" aria-hidden="true">№3</span>
+          <span>
+            <strong>Кандидаты</strong>
+            <small>округ №3 · Санкт-Петербург</small>
+          </span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#compare">Сравнить</a></li>
+          <li><a href="#candidates">Кандидаты</a></li>
+          <li><a href="#method">Как читать</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section id="top" class="hero container">
+        <div class="hero-copy">
+          <p class="eyebrow">Выборы в ЗакС Санкт-Петербурга · срез 18.09.2026</p>
+          <h1>Сравнивайте позиции.<br><span>Проверяйте доказательства.</span></h1>
+          <p class="lead">Непартийный справочник по четырём кандидатам округа №3. Здесь нет общего рейтинга: мы показываем, что кандидат лично сказал или сделал, откуда это известно и чего пока не удалось проверить.</p>
+          <p class="hero-source">Контекст кампании: <a href="https://www.zaks.ru/new/archive/view/267807" target="_blank" rel="noopener">регистрационный материал по округу №3</a> · <a href="https://ru.wikipedia.org/wiki/Выборы_в_Законодательное_собрание_Санкт-Петербурга_(2026)" target="_blank" rel="noopener">сведения о выборах</a>.</p>
+          <div class="hero-actions">
+            <a href="#compare" role="button">Открыть сравнение</a>
+            <a href="#method" role="button" class="secondary outline">Как устроено</a>
+          </div>
+        </div>
+        <aside class="principles-card" aria-label="Принципы справочника">
+          <p class="eyebrow">Три правила</p>
+          <ul class="principles">
+            <li><span>01</span><div><strong>Один вопрос — все кандидаты</strong><small>Одинаковая рамка сравнения по темам ЗакСа.</small></div></li>
+            <li><span>02</span><div><strong>Нет ответа ≠ «против»</strong><small>Пробелы видны, но не превращаются в оценку.</small></div></li>
+            <li><span>03</span><div><strong>Каждый факт — с источником</strong><small>Цитата, дата, атрибуция и конкретная страница.</small></div></li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="container stats" aria-label="О справочнике">
+        <article class="stat-card"><strong id="stat-candidates">—</strong><span>кандидата</span></article>
+        <article class="stat-card"><strong id="stat-topics">—</strong><span>одинаковых тем</span></article>
+        <article class="stat-card"><strong id="stat-evidence">—</strong><span>записей в реестре</span></article>
+        <article class="stat-card stat-card-note"><strong>0</strong><span>итоговых рейтингов</span></article>
+      </section>
+
+      <section id="compare" class="container section-block">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Слой 1 · быстрый ориентир</p>
+            <h2>Сравнение по одинаковым вопросам</h2>
+          </div>
+          <p class="section-intro">Выберите тему и откройте доказательства. Ячейка без личной позиции не означает, что кандидат занимает противоположную позицию.</p>
+        </div>
+
+        <div class="controls" aria-label="Фильтры сравнения">
+          <label>
+            Тема
+            <select id="topic-filter">
+              <option value="all">Все темы</option>
+            </select>
+          </label>
+          <label>
+            Показывать
+            <select id="evidence-filter">
+              <option value="all">Все уровни атрибуции</option>
+              <option value="personal">Только личные и коллективные действия</option>
+              <option value="party">Только партийный контекст</option>
+              <option value="needs-review">Требующие уточнения</option>
+            </select>
+          </label>
+          <label class="search-field">
+            Поиск по тексту
+            <input id="search" type="search" placeholder="Например: бюджет, ЖКХ, приём">
+          </label>
+        </div>
+
+        <div class="candidate-switcher" id="candidate-switcher" aria-label="Фильтр кандидатов"></div>
+        <p class="results-note" id="compare-status" role="status" aria-live="polite">Загружаем проверенные записи…</p>
+        <div id="comparison-list" class="comparison-list"></div>
+      </section>
+
+      <section id="candidates" class="container section-block">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Слой 2 · одинаковый порядок</p>
+            <h2>Кандидаты</h2>
+          </div>
+          <p class="section-intro">Карточка отделяет личные заявления, поступки, партийный контекст и то, что пока не найдено.</p>
+        </div>
+        <div id="candidate-grid" class="candidate-grid"></div>
+      </section>
+
+      <section class="container section-block accountability-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Слой 3 · подотчётность</p>
+            <h2>Как читать обещания и действия</h2>
+          </div>
+          <p class="section-intro">Публичная версия не выносит моральный вердикт. Она показывает цепочку: заявление → полномочие → действие → наблюдаемый результат.</p>
+        </div>
+        <div class="accountability-grid">
+          <article>
+            <span class="step-number">01</span>
+            <h3>Что обещано?</h3>
+            <p>Точная цитата, дата и контекст. Федеральная кампания и выборы в ЗакС не смешиваются.</p>
+          </article>
+          <article>
+            <span class="step-number">02</span>
+            <h3>Кто может это сделать?</h3>
+            <p>Проверяем, относится ли вопрос к полномочиям ЗакСа, муниципалитета или другого уровня власти.</p>
+          </article>
+          <article>
+            <span class="step-number">03</span>
+            <h3>Что произошло?</h3>
+            <p>Внесение проекта, голосование и принятие — разные события. Для каждого нужен отдельный источник.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="method" class="container section-block method-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Слой 4 · прозрачность</p>
+            <h2>Как пользоваться справочником</h2>
+          </div>
+        </div>
+        <div class="method-grid">
+          <details open>
+            <summary>Что означает атрибуция?</summary>
+            <dl class="legend-list">
+              <div><dt><span class="badge badge-personal">Личное</span></dt><dd>Прямая цитата или действие кандидата.</dd></div>
+              <div><dt><span class="badge badge-collective">Коллективное</span></dt><dd>Совместный законопроект или действие нескольких депутатов.</dd></div>
+              <div><dt><span class="badge badge-party">Партия</span></dt><dd>Партийная позиция или канал; это не личная программа.</dd></div>
+              <div><dt><span class="badge badge-media">СМИ</span></dt><dd>Пересказ журналиста; открывайте источник и читайте оговорки.</dd></div>
+            </dl>
+          </details>
+          <details>
+            <summary>Как читать «не найдено»?</summary>
+            <p>Фраза «в проверенных источниках персональное подтверждение не найдено» описывает границы поиска. Она не означает, что события не было и не означает позицию «против».</p>
+            <p>Исторические материалы, партийные публикации и корпоративные сведения остаются полезным контекстом, но показываются с отдельной меткой.</p>
+          </details>
+          <details>
+            <summary>Почему нет общего балла?</summary>
+            <p>Количество найденных публикаций зависит от видимости кандидата, ресурсов кампании и доступности архивов. Это не мера качества. Читатель сам выбирает важные для него темы и открывает доказательства.</p>
+          </details>
+        </div>
+        <div class="method-footer">
+          <p><strong>Методология и схема данных:</strong> <a href="docs/information_architecture_2026-09-18.md">подробный документ проекта</a>. <strong>Исходный реестр:</strong> <a href="data/matriks.csv">CSV-матрица утверждений</a>.</p>
+          <p class="muted">Сайт работает как статическая страница: данные загружаются из CSV и JSON, поэтому его можно публиковать на GitHub Pages без сервера.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>Кандидаты · округ №3</span>
+        <span>Срез данных: 18.09.2026</span>
+      </div>
+    </footer>
+    <script src="app.js" defer></script>
+  </body>
+</html>
