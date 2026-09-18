@@ -134,9 +134,18 @@
         ],
         "party_context_urls": [
           "https://spravedlivo.ru/16228710",
-          "https://moskva.spravedlivo.ru/28703410"
+          "https://moskva.spravedlivo.ru/28703410",
+          "https://t.me/s/spravPiter/6630",
+          "https://t.me/s/spravPiter/6617",
+          "https://t.me/s/spravPiter/6569"
         ],
-        "note": "Отрицательный результат не означает, что события не было."
+        "note": "В проверенных источниках персональное подтверждение не найдено. Проверены официальные материалы СР, публичная лента Telegram и направления: высказывания, поездки, конвои, сборы, помощь военнослужащим и ветеранам, мобилизация, контрактная служба, Донбасс, новые регионы, госпитали и волонтёрство. Партийная госпитальная акция в ЛНР подтверждает только партийный контекст: https://t.me/s/spravPiter/6630. Отрицательный результат не означает, что события не было.",
+        "checked_search_urls": [
+          "https://t.me/s/spravPiter?q=%D0%94%D1%83%D0%B4%D0%BE%D0%BB%D0%B0%D0%B4%D0%BE%D0%B2",
+          "https://t.me/s/spravPiter?q=%D0%B3%D1%83%D0%BC%D0%B0%D0%BD%D0%B8%D1%82%D0%B0%D1%80",
+          "https://t.me/s/spravPiter?q=%D0%A1%D0%92%D0%9E",
+          "https://t.me/s/spravPiter?q=%D0%B2%D0%B5%D1%82%D0%B5%D1%80%D0%B0%D0%BD"
+        ]
       }
     },
     {
@@ -246,9 +255,18 @@
         ],
         "party_context_urls": [
           "https://cprfspb.ru/news/sbor-ghumanitarnoi-pomoshchi-zhitieliam-donietska-i-lughanska/",
-          "https://msk.kprf.ru/2026/04/30/286493/"
+          "https://msk.kprf.ru/2026/04/30/286493/",
+          "https://cprfspb.ru/",
+          "https://cprfspb.ru/rajonnye-organizacii/",
+          "https://www.zaks.ru/new/person/view/4827"
         ],
-        "note": "Отрицательный результат не означает, что события не было."
+        "note": "В проверенных источниках персональное подтверждение не найдено. Проверены официальные материалы КПРФ и петербургского отделения, районная организация, профиль СМИ и направления: высказывания, поездки, конвои, сборы, помощь военнослужащим и ветеранам, мобилизация, контрактная служба, Донбасс, новые регионы, госпитали и волонтёрство. Партийная должность и общие партийные материалы не доказывают личную позицию по СВО. Отрицательный результат не означает, что события не было.",
+        "checked_search_urls": [
+          "https://www.zaks.ru/new/person/view/4827",
+          "https://cprfspb.ru/rajonnye-organizacii/",
+          "https://cprfspb.ru/",
+          "https://www.zaks.ru/new/archive/view/267807"
+        ]
       }
     }
   ]
